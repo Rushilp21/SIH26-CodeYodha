@@ -17,8 +17,14 @@ except ImportError:  # scaffold still importable without gym installed
     spaces = None
 
 from actions import DIRECTIONS, action_space_n, decode_action
-from reward import RewardBreakdown, compose_reward
-from state import ParcelState, flatten_observation
+from reward import (
+    RewardBreakdown,
+    compose_reward,
+    compute_deviation_term,
+    compute_regularity_term,
+    compute_topology_term,
+)
+from state import OBS_SIZE, ParcelState, flatten_observation
 
 STORAGE_CRS = os.getenv("STORAGE_CRS", "EPSG:4326")
 PROCESSING_CRS = os.getenv("PROCESSING_CRS", "EPSG:32645")
@@ -43,7 +49,9 @@ class ParcelBoundaryEnv(gym.Env if gym else object):
         self.initial_polygon = np.asarray(initial_polygon, dtype=np.float32)
         if self.initial_polygon.ndim != 2 or self.initial_polygon.shape[1] != 2:
             raise ValueError("initial_polygon must be (V, 2) in PROCESSING_CRS metres")
-        self.neighboring_polygons = neighboring_polygons or []
+        self.neighboring_polygons = [
+            np.asarray(p, dtype=np.float32) for p in (neighboring_polygons or [])
+        ]
         self.ground_truth = ground_truth
         self.step_m = step_m
         self.max_steps = max_steps
@@ -54,10 +62,10 @@ class ParcelBoundaryEnv(gym.Env if gym else object):
         n = action_space_n(len(self.initial_polygon))
         if spaces:
             self.action_space = spaces.Discrete(n)
-            self.observation_space = spaces.Box(low=-1e6, high=1e6, shape=(64,), dtype=np.float32)
+            self.observation_space = spaces.Box(low=-1e6, high=1e6, shape=(OBS_SIZE,), dtype=np.float32)
         else:
             self.action_space = type("A", (), {"n": n})()
-            self.observation_space = type("O", (), {"shape": (64,)})()
+            self.observation_space = type("O", (), {"shape": (OBS_SIZE,)})()
 
     def reset(self, seed=None, options=None):
         if gym:
@@ -91,14 +99,13 @@ class ParcelBoundaryEnv(gym.Env if gym else object):
         return flatten_observation(state)
 
     def _calculate_reward(self) -> RewardBreakdown:
-        """Scaffold zeros except a tiny regularity placeholder. Dev 2 fills real terms."""
+        # TODO post-hackathon: needs image gradients / labeled ground truth
         iou_reward = 0.0
+        # TODO post-hackathon: needs image gradients / labeled ground truth
         edge_alignment_reward = 0.0
-        geometry_regularization_penalty = 0.0
-        topology_violation_penalty = 0.0
-        baseline_deviation_penalty = 0.0
-        if self.ground_truth is None:
-            pass
+        geometry_regularization_penalty = compute_regularity_term(self._poly)
+        topology_violation_penalty = compute_topology_term(self._poly, self.neighboring_polygons)
+        baseline_deviation_penalty = compute_deviation_term(self._poly, self.initial_polygon)
         return compose_reward(
             iou_reward,
             edge_alignment_reward,

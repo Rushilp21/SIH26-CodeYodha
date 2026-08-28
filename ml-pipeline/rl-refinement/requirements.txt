@@ -1,3 +1,6 @@
 gymnasium>=0.29.0
 numpy>=1.26.0
-# torch / stable-baselines3 — install when Dev 2 starts training, not required for env skeleton
+shapely>=2.0.0
+pyproj>=3.6.0
+stable-baselines3>=2.8.0
+# torch installs transitively via stable-baselines3

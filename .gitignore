@@ -47,3 +47,5 @@ Thumbs.db
 # Docker / logs
 *.log
 docker-data/
+
+data/raw/segmentation/segformer_bhumisetu_finetuned/*.safetensors

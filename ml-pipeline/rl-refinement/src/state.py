@@ -16,10 +16,22 @@ class ParcelState:
     topology_flags: dict
 
 
+MAX_VERTICES = 40
+OBS_SIZE = MAX_VERTICES * 2
+
+
 def flatten_observation(state: ParcelState) -> np.ndarray:
-    verts = state.current_polygon_xy.reshape(-1).astype(np.float32)
-    # Fixed-size scaffold observation: first 32 vertex coords + zeros
-    obs = np.zeros(64, dtype=np.float32)
-    n = min(verts.size, 32)
-    obs[:n] = verts[:n]
+    verts = np.asarray(state.current_polygon_xy, dtype=np.float32)
+    # Center on the polygon's own centroid: current_polygon_xy arrives in
+    # PROCESSING_CRS (UTM) metres, e.g. easting/northing ~1e5-1e6, which would
+    # otherwise be fed raw into the policy MLP (and even exceeds the +/-1e6
+    # observation_space bound in environment.py). Centering keeps the network
+    # seeing small, well-scaled relative vertex positions.
+    if verts.size:
+        verts = verts - verts.mean(axis=0)
+    flat = verts.reshape(-1)
+    # Fixed-size scaffold observation: first MAX_VERTICES vertex coords + zeros
+    obs = np.zeros(OBS_SIZE, dtype=np.float32)
+    n = min(flat.size, OBS_SIZE)
+    obs[:n] = flat[:n]
     return obs
