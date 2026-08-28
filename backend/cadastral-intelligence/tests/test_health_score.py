@@ -1,16 +1,48 @@
-import sys
-from pathlib import Path
-
-SRC = Path(__file__).resolve().parents[1] / "src"
-sys.path.insert(0, str(SRC))
-
-from health_score import compute_health_score, DEFAULT_WEIGHTS  # noqa: E402
+from src.health_score import (
+    HealthScoreInput,
+    calculate_health_score,
+)
 
 
-def test_default_weights_sum_to_one():
-    w = DEFAULT_WEIGHTS
-    assert abs((w.w1 + w.w2 + w.w3 + w.w4) - 1.0) < 1e-9
+def test_perfect_health_score():
+
+    result = calculate_health_score(
+        HealthScoreInput(
+            confidence_score=1.0,
+            topology_violation_flag=False,
+            normalized_discrepancy=0.0,
+            historical_volatility=0.0,
+        )
+    )
+
+    assert result.score == 1.0
+    assert result.band == "high"
 
 
-def test_perfect_inputs():
-    assert compute_health_score(1.0, 0.0, 0.0, 0.0) == 1.0
+def test_bad_health_score():
+
+    result = calculate_health_score(
+        HealthScoreInput(
+            confidence_score=0.2,
+            topology_violation_flag=True,
+            normalized_discrepancy=1.0,
+            historical_volatility=1.0,
+        )
+    )
+
+    assert result.score == 0.08
+    assert result.band == "low"
+
+
+def test_medium_health_score():
+
+    result = calculate_health_score(
+        HealthScoreInput(
+            confidence_score=0.8,
+            topology_violation_flag=False,
+            normalized_discrepancy=0.4,
+            historical_volatility=0.2,
+        )
+    )
+
+    assert 0.60 <= result.score <= 0.85

@@ -1,0 +1,6 @@
+sqlalchemy>=2.0
+psycopg[binary]>=3.2
+shapely>=2.0
+geoalchemy2>=0.15
+pydantic-settings>=2.0
+pytest>=8.0

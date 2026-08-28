@@ -1,7 +1,9 @@
 # Env and secrets
 .env
 .env.local
+backend/cadastral-intelligence/.env
 *.pem
+
 
 # Python
 __pycache__/
