@@ -1,0 +1,47 @@
+# Env and secrets
+.env
+.env.local
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+
+# Node
+node_modules/
+frontend/**/dist/
+frontend/**/.vite/
+*.tsbuildinfo
+
+# ML artifacts (keep folders)
+ml-pipeline/rl-refinement/models/*
+!ml-pipeline/rl-refinement/models/.gitkeep
+ml-pipeline/rl-refinement/experiments/*
+!ml-pipeline/rl-refinement/experiments/.gitkeep
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Data dumps
+data/sample/*.tif
+data/sample/*.img
+!data/sample/.gitkeep
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Docker / logs
+*.log
+docker-data/

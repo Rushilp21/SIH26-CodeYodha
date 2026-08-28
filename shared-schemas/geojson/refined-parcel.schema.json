@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bhumisetu.local/schemas/geojson/refined-parcel.schema.json",
+  "title": "BhumiSetu Refined Parcel (Dev 2 -> Backend)",
+  "description": "RL-refined parcel payload. Geometry is EPSG:4326. Scores are 0..1. This is NOT ordinary polygon smoothing.",
+  "type": "object",
+  "required": [
+    "parcel_id",
+    "geometry",
+    "confidence_score",
+    "segmentation_score",
+    "topology_score",
+    "edge_alignment_score",
+    "deviation_from_baseline_score",
+    "explanation"
+  ],
+  "properties": {
+    "parcel_id": { "type": "string", "format": "uuid" },
+    "geometry": {
+      "type": "object",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": { "const": "Polygon" },
+        "coordinates": { "type": "array" }
+      }
+    },
+    "confidence_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "segmentation_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "topology_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "edge_alignment_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "deviation_from_baseline_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "explanation": {
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "Boundary shifted 2.3m NE relative to the baseline; edge alignment improved while topology remained valid."
+      ]
+    },
+    "demo": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

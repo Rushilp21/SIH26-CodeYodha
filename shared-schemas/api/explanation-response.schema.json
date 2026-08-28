@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bhumisetu.local/schemas/api/explanation-response.schema.json",
+  "title": "Parcel explanation API response",
+  "type": "object",
+  "required": ["parcel_id", "explanation", "components"],
+  "properties": {
+    "parcel_id": { "type": "string", "format": "uuid" },
+    "explanation": { "type": "string" },
+    "confidence_score": { "type": ["number", "null"] },
+    "health_score": { "type": ["number", "null"] },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["component", "score", "explanation"],
+        "properties": {
+          "component": {
+            "enum": ["segmentation", "topology", "edge_alignment", "deviation_from_baseline"]
+          },
+          "score": { "type": "number", "minimum": 0, "maximum": 1 },
+          "explanation": { "type": "string" }
+        }
+      }
+    }
+  }
+}

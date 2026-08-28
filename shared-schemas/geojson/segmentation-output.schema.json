@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bhumisetu.local/schemas/geojson/segmentation-output.schema.json",
+  "title": "BhumiSetu Segmentation Output",
+  "description": "Developer 1 -> Developer 2 GeoJSON handoff. Geometry must be EPSG:4326 (STORAGE_CRS).",
+  "type": "object",
+  "required": ["type", "features"],
+  "additionalProperties": true,
+  "properties": {
+    "type": { "const": "FeatureCollection" },
+    "name": { "type": "string" },
+    "crs": { "type": "object" },
+    "features": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/segmentationFeature" }
+    }
+  },
+  "$defs": {
+    "className": {
+      "type": "string",
+      "enum": ["parcel", "building", "road", "land_use"]
+    },
+    "segmentationFeature": {
+      "type": "object",
+      "required": ["type", "properties", "geometry"],
+      "properties": {
+        "type": { "const": "Feature" },
+        "properties": {
+          "type": "object",
+          "required": ["class", "raw_confidence", "source_tile_id", "parcel_id"],
+          "properties": {
+            "class": { "$ref": "#/$defs/className" },
+            "raw_confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+            "source_tile_id": { "type": "string", "minLength": 1 },
+            "parcel_id": { "type": "string", "format": "uuid" }
+          },
+          "additionalProperties": true
+        },
+        "geometry": {
+          "oneOf": [
+            { "$ref": "#/$defs/polygon" },
+            { "$ref": "#/$defs/lineString" },
+            { "$ref": "#/$defs/multiPolygon" }
+          ]
+        }
+      }
+    },
+    "polygon": {
+      "type": "object",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": { "const": "Polygon" },
+        "coordinates": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 4,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 3,
+              "items": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "multiPolygon": {
+      "type": "object",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": { "const": "MultiPolygon" },
+        "coordinates": { "type": "array" }
+      }
+    },
+    "lineString": {
+      "type": "object",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": { "const": "LineString" },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 3,
+            "items": { "type": "number" }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bhumisetu.local/schemas/geojson/parcel-feature.schema.json",
+  "title": "BhumiSetu Parcel Feature",
+  "description": "Single parcel Feature stored/served in STORAGE_CRS (EPSG:4326).",
+  "type": "object",
+  "required": ["type", "properties", "geometry"],
+  "properties": {
+    "type": { "const": "Feature" },
+    "properties": {
+      "type": "object",
+      "required": ["id", "project_id", "source", "status"],
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "project_id": { "type": "string", "format": "uuid" },
+        "source": { "enum": ["ai_extracted", "existing_gis", "field_verified"] },
+        "status": { "enum": ["ai_processed", "needs_review", "verified", "rejected"] },
+        "confidence_score": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "health_score": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "land_use": { "type": ["string", "null"] },
+        "area_sqm": { "type": ["number", "null"] },
+        "version": { "type": "integer", "minimum": 1 },
+        "demo": { "type": "boolean", "description": "True when this feature is seeded/mock, not live ML." }
+      },
+      "additionalProperties": true
+    },
+    "geometry": {
+      "type": "object",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": { "const": "Polygon" },
+        "coordinates": { "type": "array" }
+      }
+    }
+  }
+}

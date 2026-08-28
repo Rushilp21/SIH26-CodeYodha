@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bhumisetu.local/schemas/api/confidence-bands.schema.json",
+  "title": "BhumiSetu confidence bands (FROZEN)",
+  "description": "Shared contract for confidence thresholds. Do not change without team notification.",
+  "type": "object",
+  "const": {
+    "HIGH": { "min": 0.85, "max": 1.0, "inclusive_min": true, "action": "eligible_for_auto_approval" },
+    "MEDIUM": { "min": 0.6, "max": 0.85, "inclusive_min": true, "inclusive_max": false, "action": "requires_review" },
+    "LOW": { "min": 0.0, "max": 0.6, "inclusive_max": false, "action": "requires_field_verification" }
+  },
+  "properties": {
+    "HIGH": {
+      "description": "confidence >= 0.85 — eligible for auto-approval"
+    },
+    "MEDIUM": {
+      "description": "0.60 <= confidence < 0.85 — requires review"
+    },
+    "LOW": {
+      "description": "confidence < 0.60 — requires field verification"
+    }
+  }
+}

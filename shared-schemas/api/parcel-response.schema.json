@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bhumisetu.local/schemas/api/parcel-response.schema.json",
+  "title": "Parcel API response",
+  "type": "object",
+  "required": ["id", "project_id", "geom", "source", "status"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "project_id": { "type": "string", "format": "uuid" },
+    "geom": { "type": "object", "description": "GeoJSON Polygon, EPSG:4326" },
+    "source": { "enum": ["ai_extracted", "existing_gis", "field_verified"] },
+    "status": { "enum": ["ai_processed", "needs_review", "verified", "rejected"] },
+    "confidence_score": { "type": ["number", "null"] },
+    "confidence_band": { "enum": ["HIGH", "MEDIUM", "LOW", null] },
+    "health_score": { "type": ["number", "null"] },
+    "land_use": { "type": ["string", "null"] },
+    "area_sqm": { "type": ["number", "null"] },
+    "version": { "type": "integer" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  }
+}

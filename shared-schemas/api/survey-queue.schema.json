@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bhumisetu.local/schemas/api/survey-queue.schema.json",
+  "title": "Survey queue item",
+  "type": "object",
+  "required": ["id", "parcel_id", "priority_score", "reason", "status"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "parcel_id": { "type": "string", "format": "uuid" },
+    "priority_score": { "type": "number" },
+    "reason": { "type": "string" },
+    "status": { "enum": ["pending", "assigned", "completed"] },
+    "assigned_to": { "type": ["string", "null"], "format": "uuid" },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}
