@@ -20,7 +20,7 @@ database_url = os.getenv(
     "DATABASE_URL",
     "postgresql+psycopg2://bhumisetu:bhumisetu@localhost:5432/bhumisetu",
 )
-config.set_main_option("sqlalchemy.url", database_url)
+config.set_main_option("sqlalchemy.url", database_url.replace("%", "%%"))
 
 target_metadata = Base.metadata
 
