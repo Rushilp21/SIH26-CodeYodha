@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from geoalchemy2.elements import WKTElement
 from sqlalchemy.orm import Session
 
+
 from backend.api.app.schemas.models import (
     ImageryUploadOut,
     ProcessOut,
@@ -12,8 +13,10 @@ from backend.api.app.schemas.models import (
     ProjectStatusOut,
 )
 from backend.api.app.services.geo import geojson_to_wkt, geom_to_geojson
+from backend.api.app.tasks.pipeline import process_project as process_project_task
 from backend.db.models.orm import Parcel, Project
 from backend.db.session import get_db
+from celery.result import AsyncResult
 
 router = APIRouter(prefix="/projects", tags=["projects"])
 
@@ -73,18 +76,41 @@ def upload_imagery(project_id: str, db: Session = Depends(get_db)):
 @router.post("/{project_id}/process", response_model=ProcessOut)
 def process_project(project_id: str, db: Session = Depends(get_db)):
     project = db.get(Project, project_id)
+
     if project is None:
         raise HTTPException(status_code=404, detail="Project not found")
-    # Seeded parcels already exist for the demo project. Mark as review without pretending ML ran.
-    project.status = "review"
+
+    project.status = "processing"
     db.commit()
+
+    try:
+        task = process_project_task.delay(project_id)
+    except Exception as exc:
+        project.status = "created"
+        db.commit()
+
+        raise HTTPException(
+            status_code=503,
+            detail=f"Unable to enqueue processing task: {exc}",
+        )
+
     return ProcessOut(
         project_id=project_id,
-        status=project.status,
-        message="DEMO: processing marked complete using seeded parcels. Live ML/RL is not executed.",
+        status="processing",
+        message=f"Processing task queued: {task.id}",
         demo=True,
     )
 
+@router.get("/{project_id}/task/{task_id}")
+def processing_task_status(project_id: str, task_id: str):
+    task = AsyncResult(task_id)
+
+    return {
+        "project_id": project_id,
+        "task_id": task_id,
+        "state": task.state,
+        "result": task.result if task.successful() else None,
+    }
 
 @router.get("/{project_id}/status", response_model=ProjectStatusOut)
 def project_status(project_id: str, db: Session = Depends(get_db)):

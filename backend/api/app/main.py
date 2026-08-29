@@ -1,5 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text
+from backend.db.session import get_db
+from fastapi import Depends
+from sqlalchemy.orm import Session
 
 from backend.api.app.routers import (
     auth,
@@ -33,3 +37,35 @@ app.include_router(vendors.router)
 @app.get("/health")
 def health():
     return {"status": "ok", "service": "bhumisetu-api"}
+
+@app.get("/health/db")
+def database_health(db: Session = Depends(get_db)):
+    try:
+        db.execute(text("SELECT 1"))
+        return {
+            "status": "ok",
+            "database": "postgresql",
+        }
+    except Exception as exc:
+        return {
+            "status": "error",
+            "database": "postgresql",
+            "detail": str(exc),
+        }
+        
+@app.get("/health/postgis")
+def postgis_health(db: Session = Depends(get_db)):
+    try:
+        result = db.execute(
+            text("SELECT PostGIS_Version()")
+        ).scalar()
+
+        return {
+            "status": "ok",
+            "postgis_version": result,
+        }
+    except Exception as exc:
+        return {
+            "status": "error",
+            "detail": str(exc),
+        }
