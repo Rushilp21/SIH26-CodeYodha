@@ -10,6 +10,11 @@ export default defineConfig({
   resolve: {
     alias: {
       "@shared": path.resolve(dir, "../shared"),
+      // Shared components are a sibling directory. Pin React resolution to the
+      // canonical web-gis install so their JSX compiles on a clean checkout.
+      "react/jsx-runtime": path.resolve(dir, "node_modules/react/jsx-runtime.js"),
+      "react/jsx-dev-runtime": path.resolve(dir, "node_modules/react/jsx-dev-runtime.js"),
+      react: path.resolve(dir, "node_modules/react"),
     },
   },
   server: { port: 5173 },

@@ -1,5 +1,10 @@
 import type { Explanation, Parcel, Project, SurveyQueueItem } from "@shared/types";
 
+export type DashboardSnapshot = {
+  projects: Project[];
+  parcels: Parcel[];
+};
+
 const BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 
 async function getJson<T>(path: string): Promise<T> {
@@ -10,6 +15,13 @@ async function getJson<T>(path: string): Promise<T> {
 
 export async function fetchProjects(): Promise<Project[]> {
   return getJson("/projects");
+}
+
+/** Aggregates only existing canonical endpoints; no mock parcel metrics are used. */
+export async function fetchDashboardSnapshot(): Promise<DashboardSnapshot> {
+  const projects = await fetchProjects();
+  const parcels = (await Promise.all(projects.map((project) => fetchParcels(project.id)))).flat();
+  return { projects, parcels };
 }
 
 export async function fetchProjectStatus(id: string) {
