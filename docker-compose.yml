@@ -34,8 +34,6 @@ services:
       context: .
       dockerfile: infra/docker/Dockerfile.api
     container_name: bhumisetu-api
-    env_file:
-      - .env
     environment:
       POSTGRES_HOST: postgres
       DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER:-bhumisetu}:${POSTGRES_PASSWORD:-bhumisetu}@postgres:5432/${POSTGRES_DB:-bhumisetu}
@@ -45,6 +43,8 @@ services:
     ports:
       - "${API_PORT:-8000}:8000"
     depends_on:
+      migrate:
+        condition: service_completed_successfully
       postgres:
         condition: service_healthy
       redis:
@@ -54,6 +54,33 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+    restart: unless-stopped
+
+  migrate:
+    build:
+      context: .
+      dockerfile: infra/docker/Dockerfile.api
+    environment:
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER:-bhumisetu}:${POSTGRES_PASSWORD:-bhumisetu}@postgres:5432/${POSTGRES_DB:-bhumisetu}
+    command: ["alembic", "-c", "backend/db/alembic.ini", "upgrade", "head"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  worker:
+    build:
+      context: .
+      dockerfile: infra/docker/Dockerfile.api
+    command: ["celery", "-A", "backend.api.app.tasks.celery_app:celery_app", "worker", "--loglevel=info"]
+    environment:
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER:-bhumisetu}:${POSTGRES_PASSWORD:-bhumisetu}@postgres:5432/${POSTGRES_DB:-bhumisetu}
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+    depends_on:
+      redis:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
     restart: unless-stopped
 
 volumes:

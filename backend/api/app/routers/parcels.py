@@ -1,8 +1,10 @@
 from uuid import uuid4
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from geoalchemy2.elements import WKTElement
 from sqlalchemy.orm import Session
+from sqlalchemy import text
 
 from backend.api.app.schemas.models import (
     ExplanationOut,
@@ -14,7 +16,7 @@ from backend.api.app.schemas.models import (
 )
 from backend.api.app.services.geo import geojson_to_wkt, geom_to_geojson
 from backend.api.app.services.parcels import parcel_to_out
-from backend.db.models.orm import ConfidenceEvidence, Correction, Parcel
+from backend.db.models.orm import ConfidenceEvidence, Correction, Parcel, ParcelVersion, SurveyQueue
 from backend.db.session import get_db
 
 router = APIRouter(prefix="/parcels", tags=["parcels"])
@@ -52,12 +54,20 @@ def patch_parcel(parcel_id: str, body: ParcelPatch, db: Session = Depends(get_db
     if p is None:
         raise HTTPException(status_code=404, detail="Parcel not found")
     if body.geom is not None:
+        db.add(ParcelVersion(parcel_id=p.id, geom=p.geom, captured_at=datetime.now(timezone.utc), source=p.source))
         p.geom = WKTElement(geojson_to_wkt(body.geom.model_dump()), srid=4326)
         p.version = (p.version or 1) + 1
+        p.confidence_score = None
+        p.health_score = None
+        p.status = "needs_review"
+        db.query(ConfidenceEvidence).filter(ConfidenceEvidence.parcel_id == p.id).delete()
     if body.land_use is not None:
         p.land_use = body.land_use
     if body.status is not None:
         p.status = body.status
+    db.flush()
+    if body.geom is not None:
+        p.area_sqm = db.execute(text("SELECT ST_Area(geom::geography) FROM parcels WHERE id=CAST(:id AS uuid)"), {"id": p.id}).scalar()
     db.commit()
     db.refresh(p)
     return ParcelOut(**parcel_to_out(p))
@@ -70,6 +80,9 @@ def verify_parcel(parcel_id: str, body: VerifyIn, db: Session = Depends(get_db))
         raise HTTPException(status_code=404, detail="Parcel not found")
     original = geom_to_geojson(p.geom)
     corrected = body.geom.model_dump() if body.geom is not None else original
+    if body.correction_type in ("split", "merge", "land_use_fix"):
+        raise HTTPException(422, "Use a dedicated split/merge or land-use workflow; this endpoint verifies a single boundary")
+    db.add(ParcelVersion(parcel_id=p.id, geom=p.geom, captured_at=datetime.now(timezone.utc), source=p.source))
     correction = Correction(
         id=str(uuid4()),
         parcel_id=p.id,
@@ -79,15 +92,23 @@ def verify_parcel(parcel_id: str, body: VerifyIn, db: Session = Depends(get_db))
     )
     db.add(correction)
     p.geom = WKTElement(geojson_to_wkt(corrected), srid=4326)
-    p.status = "verified"
-    p.source = "field_verified"
+    p.status = "rejected" if body.correction_type == "reject" else "verified"
+    if body.correction_type != "reject":
+        p.source = "field_verified"
+    if body.geom is not None:
+        p.confidence_score = None
+        p.health_score = None
+        db.query(ConfidenceEvidence).filter(ConfidenceEvidence.parcel_id == p.id).delete()
     p.version = (p.version or 1) + 1
+    db.query(SurveyQueue).filter(SurveyQueue.parcel_id == p.id, SurveyQueue.status.in_(["pending", "assigned"])).update({"status": "completed"})
+    db.flush()
+    p.area_sqm = db.execute(text("SELECT ST_Area(geom::geography) FROM parcels WHERE id=CAST(:id AS uuid)"), {"id": p.id}).scalar()
     db.commit()
     return VerifyOut(
         parcel_id=str(p.id),
         status=p.status,
         correction_id=str(correction.id),
-        message="Correction recorded. Parcel marked verified.",
+        message=f"Correction recorded. Parcel marked {p.status}.",
     )
 
 

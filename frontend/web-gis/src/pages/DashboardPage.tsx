@@ -1,19 +1,18 @@
-import { type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ErrorState, LoadingState, StatusBadge } from "@shared/components";
 import { fetchDashboardSnapshot } from "../api/client";
+import { dashboardMetrics } from "../data/dashboardMetrics";
 import { Icon } from "../components/Icon";
-import { demoDashboardActivity } from "../data/dashboardAdapter";
+import { ImportWorkspace } from "../components/ImportWorkspace";
+
 import { useAsync } from "../hooks/useAsync";
 
 export function DashboardPage() {
-  const { data, error, loading } = useAsync(fetchDashboardSnapshot, []);
+  const [revision, setRevision] = useState(0);
+  const { data, error, loading } = useAsync(fetchDashboardSnapshot, [revision]);
   const parcels = data?.parcels ?? [];
-  const verified = parcels.filter((parcel) => parcel.status === "verified").length;
-  const needsReview = parcels.filter((parcel) => parcel.status === "needs_review").length;
-  const rejected = parcels.filter((parcel) => parcel.status === "rejected").length;
-  const scores = parcels.flatMap((parcel) => parcel.confidence_score == null ? [] : [parcel.confidence_score]);
-  const averageConfidence = scores.length ? scores.reduce((total, score) => total + score, 0) / scores.length : null;
+  const { verified, needsReview, fieldPending, averageConfidence } = dashboardMetrics(parcels, data?.queue ?? []);
 
   return (
     <div className="page-content fade-in">
@@ -21,20 +20,22 @@ export function DashboardPage() {
         <div>
           <p className="eyebrow">Cadastral operations</p>
           <h1>Parcel intelligence at a glance</h1>
-          <p>Live counts below are calculated from the canonical project and parcel APIs.</p>
+          <p>Counts are calculated from stored backend records; demo provenance is shown above.</p>
         </div>
-        <div className="live-note"><span /> Live API data</div>
+        <div className="live-note">{loading ? "Loading records…" : error ? "Records unavailable" : "Backend records loaded"}</div>
+        <button className="action-secondary" disabled={loading} onClick={() => setRevision(x => x + 1)}>Refresh</button>
       </div>
       {loading ? <LoadingState /> : null}
       {error ? (
-        <ErrorState message={`API unreachable (${error}). Start backend on :8000 and seed data.`} />
+        <ErrorState message={error} />
       ) : null}
       {!loading && !error ? <>
-        <section className="stat-cards" aria-label="Live parcel statistics">
-          <StatCard icon={<Icon name="map" size={20} />} iconClass="blue" label="Total Parcels" value={parcels.length.toLocaleString()} sub={`${data?.projects.length ?? 0} active projects`} />
+        <ImportWorkspace />
+        <section className="stat-cards" aria-label="Recorded parcel statistics">
+          <StatCard icon={<Icon name="map" size={20} />} iconClass="blue" label="Total Parcels" value={parcels.length.toLocaleString()} sub={`${data?.projects.length ?? 0} projects`} />
           <StatCard icon={<Icon name="check" size={20} />} iconClass="green" label="Verified" value={verified.toLocaleString()} sub="Verified through the API" />
           <StatCard icon={<Icon name="clock" size={20} />} iconClass="amber" label="Needs Review" value={needsReview.toLocaleString()} sub="Awaiting GIS action" />
-          <StatCard icon={<Icon name="alert" size={20} />} iconClass="red" label="Rejected" value={rejected.toLocaleString()} sub="Requires follow-up" />
+          <StatCard icon={<Icon name="alert" size={20} />} iconClass="red" label="Pending Field Surveys" value={fieldPending.toLocaleString()} sub="Unique parcels in pending / assigned queue entries" />
         </section>
 
         <section className="dashboard-grid">
@@ -47,7 +48,7 @@ export function DashboardPage() {
               {data?.projects.map((project) => (
                 <Link className="project-row" key={project.id} to={`/projects/${project.id}`}>
                   <div className="project-mark"><Icon name="map" size={18} /></div>
-                  <div><strong>{project.name}</strong><span>Open map workspace and review queue</span></div>
+                  <div><strong>{project.name}{project.demo ? " · DEMO" : ""}</strong><span>Open map workspace and review queue</span></div>
                   <StatusBadge status={project.status} />
                   <span className="project-arrow">→</span>
                 </Link>
@@ -57,7 +58,7 @@ export function DashboardPage() {
           </div>
 
           <div className="surface-card confidence-section">
-            <p className="card-kicker">Live quality signal</p>
+            <p className="card-kicker">Recorded quality signal</p>
             <h2>Average boundary confidence</h2>
             <div className="confidence-value"><Icon name="trend" size={22} /> {averageConfidence == null ? "n/a" : `${(averageConfidence * 100).toFixed(1)}%`}</div>
             <p>Calculated from parcel confidence scores returned by the target API.</p>
@@ -66,8 +67,8 @@ export function DashboardPage() {
         </section>
 
         <section className="surface-card activity-section">
-          <div className="section-header"><div><p className="card-kicker">Activity</p><h2>Recent activity</h2></div><span className="adapter-label">Demo adapter — API unavailable</span></div>
-          {demoDashboardActivity.map((activity) => <div className={`activity-item ${activity.kind}`} key={activity.id}><i /><span>{activity.message}</span><time>{activity.time}</time></div>)}
+          <div className="section-header"><div><p className="card-kicker">Activity</p><h2>Recent activity</h2></div><span className="adapter-label">Unavailable</span></div>
+          <p className="panel-note">The backend does not expose an activity feed. No simulated activity is displayed.</p>
         </section>
       </> : null}
     </div>

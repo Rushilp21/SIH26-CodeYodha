@@ -37,7 +37,7 @@ def create_project(body: ProjectCreate, db: Session = Depends(get_db)):
         created_at=project.created_at,
         updated_at=project.updated_at,
         area_of_interest=geom_to_geojson(project.area_of_interest),
-        demo=True,
+        demo=project.name.startswith("DEMO"),
     )
 
 
@@ -63,43 +63,12 @@ def upload_imagery(project_id: str, db: Session = Depends(get_db)):
     project = db.get(Project, project_id)
     if project is None:
         raise HTTPException(status_code=404, detail="Project not found")
-    project.status = "ingesting"
-    db.commit()
-    return ImageryUploadOut(
-        project_id=project_id,
-        status=project.status,
-        message="DEMO: imagery metadata recorded. No live raster ingest ran.",
-        demo=True,
-    )
+    raise HTTPException(501, "Raster ingestion is not implemented. Use the parcel GeoJSON import endpoint for existing outputs.")
 
 
 @router.post("/{project_id}/process", response_model=ProcessOut)
 def process_project(project_id: str, db: Session = Depends(get_db)):
-    project = db.get(Project, project_id)
-
-    if project is None:
-        raise HTTPException(status_code=404, detail="Project not found")
-
-    project.status = "processing"
-    db.commit()
-
-    try:
-        task = process_project_task.delay(project_id)
-    except Exception as exc:
-        project.status = "created"
-        db.commit()
-
-        raise HTTPException(
-            status_code=503,
-            detail=f"Unable to enqueue processing task: {exc}",
-        )
-
-    return ProcessOut(
-        project_id=project_id,
-        status="processing",
-        message=f"Processing task queued: {task.id}",
-        demo=True,
-    )
+    raise HTTPException(status_code=501, detail="Segmentation inference is unimplemented and trained RL weights are not configured. Import existing parcel GeoJSON to review stored results; no processing job was started.")
 
 @router.get("/{project_id}/task/{task_id}")
 def processing_task_status(project_id: str, task_id: str):

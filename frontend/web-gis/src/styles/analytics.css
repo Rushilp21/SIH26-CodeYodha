@@ -1,0 +1,6 @@
+.analytics-card { padding: 22px; margin-bottom: 18px; }
+.analytics-card h2 { font-size: 17px; margin-bottom: 14px; }
+.analytics-card p { color: var(--text-secondary); margin-bottom: 12px; }
+.analytics-row { display: grid; grid-template-columns: minmax(110px, 1fr) 2fr 36px; align-items: center; gap: 12px; padding: 12px 0; text-transform: capitalize; }
+.analytics-row meter { width: 100%; height: 16px; accent-color: #2563eb; }
+.topbar select { max-width: 240px; padding: 7px; border: 1px solid #dde5ef; border-radius: 7px; }

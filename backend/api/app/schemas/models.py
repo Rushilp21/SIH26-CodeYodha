@@ -1,7 +1,8 @@
 from datetime import datetime
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
+from shapely.geometry import shape
 
 ProjectStatus = Literal["created", "ingesting", "processing", "review", "completed"]
 ParcelSource = Literal["ai_extracted", "existing_gis", "field_verified"]
@@ -15,6 +16,26 @@ CorrectionType = Literal["boundary_adjust", "reject", "land_use_fix", "split", "
 class GeoJSONGeometry(BaseModel):
     type: str
     coordinates: Any
+
+    @model_validator(mode="after")
+    def valid_polygon(self):
+        try:
+            if self.type != "Polygon" or not isinstance(self.coordinates, list) or not self.coordinates:
+                raise ValueError("A nonempty Polygon is required")
+            for ring in self.coordinates:
+                if not isinstance(ring, list) or len(ring) < 4 or ring[0] != ring[-1]:
+                    raise ValueError("Polygon rings must contain at least four positions and be closed")
+                if any(not isinstance(point, (list, tuple)) or len(point) != 2 for point in ring):
+                    raise ValueError("Polygon positions must be [longitude, latitude]")
+            polygon = shape({"type": self.type, "coordinates": self.coordinates})
+            if polygon.geom_type != "Polygon" or polygon.is_empty or not polygon.is_valid:
+                raise ValueError("A valid, nonempty Polygon is required")
+            for ring in [polygon.exterior, *polygon.interiors]:
+                if any(not (-180 <= x <= 180 and -90 <= y <= 90) for x, y, *_ in ring.coords):
+                    raise ValueError("Coordinates must use longitude/latitude EPSG:4326")
+        except (TypeError, KeyError, IndexError) as exc:
+            raise ValueError("Invalid Polygon coordinates") from exc
+        return self
 
 
 class ProjectCreate(BaseModel):

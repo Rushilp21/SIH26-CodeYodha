@@ -8,6 +8,8 @@ export function useAsync<T>(fn: () => Promise<T>, deps: unknown[]) {
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
+    setData(null);
+    setError(null);
     fn()
       .then((d) => {
         if (!cancelled) {

@@ -82,19 +82,10 @@ def seed() -> None:
     except Exception:
         db.rollback()
 
-    # Wipe demo rows if re-seeded
-    db.query(Correction).delete()
-    db.query(SurveyQueue).delete()
-    db.query(Anomaly).delete()
-    db.query(ConfidenceEvidence).delete()
-    db.query(ParcelVersion).delete()
-    db.query(Building).delete()
-    db.query(Road).delete()
-    db.query(Parcel).delete()
-    db.query(Project).delete()
-    db.query(Vendor).delete()
-    db.query(User).delete()
-    db.commit()
+    # Never clear a user's database to load demonstration fixtures.
+    if db.query(Project).first() or db.query(User).first() or db.query(Vendor).first():
+        db.close()
+        raise RuntimeError("Demo seeding requires an empty database. Existing records were preserved.")
 
     users = [
         User(id=str(uuid4()), name="Asha Surveyor", email="surveyor@bhumisetu.demo", role="surveyor"),

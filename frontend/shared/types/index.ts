@@ -30,6 +30,8 @@ export interface Parcel {
   land_use: string | null;
   area_sqm: number | null;
   version: number;
+  created_at?: string | null;
+  updated_at?: string | null;
 }
 
 export interface Project {

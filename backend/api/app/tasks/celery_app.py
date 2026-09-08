@@ -9,6 +9,7 @@ celery_app = Celery(
     "bhumisetu",
     broker=settings.celery_broker_url,
     backend=settings.celery_result_backend,
+    include=["backend.api.app.tasks.pipeline"],
 )
 
 celery_app.conf.update(

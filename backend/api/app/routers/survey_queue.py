@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from backend.api.app.schemas.models import AssignIn, SurveyQueueItem
-from backend.db.models.orm import SurveyQueue
+from backend.db.models.orm import SurveyQueue, User
 from backend.db.session import get_db
 
 router = APIRouter(prefix="/survey-queue", tags=["survey-queue"])
@@ -39,8 +39,12 @@ def assign(item_id: str, body: AssignIn, db: Session = Depends(get_db)):
     row = db.get(SurveyQueue, item_id)
     if row is None:
         raise HTTPException(status_code=404, detail="Queue item not found")
+    if body.assigned_to and db.get(User, body.assigned_to) is None:
+        raise HTTPException(status_code=422, detail="Assignee must be an existing user ID")
+    if row.status == "completed":
+        raise HTTPException(status_code=409, detail="Completed surveys cannot be reassigned")
     row.assigned_to = body.assigned_to
-    row.status = "assigned"
+    row.status = "assigned" if body.assigned_to else "pending"
     db.commit()
     db.refresh(row)
     return SurveyQueueItem(

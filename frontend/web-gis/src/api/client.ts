@@ -3,13 +3,50 @@ import type { Explanation, Parcel, Project, SurveyQueueItem } from "@shared/type
 export type DashboardSnapshot = {
   projects: Project[];
   parcels: Parcel[];
+  queue: SurveyQueueItem[];
 };
 
-const BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+export type ProcessResponse = { project_id: string; status: string; message: string; demo: boolean; task_id?: string };
+export type ProcessingTask = { project_id: string; task_id: string; state: string; result: unknown };
+
+export function fetchHealth(): Promise<{ status: string; service: string }> {
+  return getJson("/health");
+}
+
+export function fetchProcessingTask(projectId: string, taskId: string): Promise<ProcessingTask> {
+  return getJson(`/projects/${encodeURIComponent(projectId)}/task/${encodeURIComponent(taskId)}`);
+}
+
+export type ChangeDetectionItem = {
+  parcel_id: string;
+  type: string;
+  magnitude: number;
+  detected_at: string | null;
+  demo: boolean;
+};
+
+export type ReviewWorkspace = {
+  parcels: Parcel[];
+  queue: SurveyQueueItem[];
+  changes: ChangeDetectionItem[];
+  explanations: Record<string, Explanation | null>;
+};
+
+const BASE = (import.meta.env.VITE_API_BASE_URL || "/api").replace(/\/$/, "");
+
+async function request(path: string, init?: RequestInit): Promise<Response> {
+  let res: Response;
+  try { res = await fetch(`${BASE}${path}`, { ...init, signal: AbortSignal.timeout(20000) }); }
+  catch { throw new Error("API connection failed. Check that the API and database are running on port 8000."); }
+  if (!res.ok) {
+    const body = await res.json().catch(() => null);
+    throw new Error(typeof body?.detail === "string" ? body.detail : `API ${res.status} (${path}). Check backend service logs.`);
+  }
+  return res;
+}
 
 async function getJson<T>(path: string): Promise<T> {
-  const res = await fetch(`${BASE}${path}`);
-  if (!res.ok) throw new Error(`${res.status} ${path}`);
+  const res = await request(path);
   return res.json();
 }
 
@@ -17,27 +54,37 @@ export async function fetchProjects(): Promise<Project[]> {
   return getJson("/projects");
 }
 
+export async function createProject(name: string): Promise<Project> {
+  return (await request("/projects", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name }) })).json();
+}
+export async function importParcelFile(id: string, collection: unknown): Promise<{ imported: number }> {
+  return (await request(`/projects/${id}/parcels/import`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(collection) })).json();
+}
+
 /** Aggregates only existing canonical endpoints; no mock parcel metrics are used. */
 export async function fetchDashboardSnapshot(): Promise<DashboardSnapshot> {
   const projects = await fetchProjects();
-  const parcels = (await Promise.all(projects.map((project) => fetchParcels(project.id)))).flat();
-  return { projects, parcels };
+  const [parcelGroups, queueGroups] = await Promise.all([
+    Promise.all(projects.map((project) => fetchParcels(project.id))),
+    Promise.all(projects.map((project) => fetchQueue(project.id))),
+  ]);
+  return { projects, parcels: parcelGroups.flat(), queue: queueGroups.flat() };
 }
 
 export async function fetchProjectStatus(id: string) {
-  return getJson<{ id: string; name: string; status: string; parcel_count: number }>(
+  return getJson<{ id: string; name: string; status: string; parcel_count: number; demo: boolean }>(
     `/projects/${id}/status`
   );
 }
 
-export async function processProject(id: string) {
-  const res = await fetch(`${BASE}/projects/${id}/process`, { method: "POST" });
+export async function processProject(id: string): Promise<ProcessResponse> {
+  const res = await request(`/projects/${id}/process`, { method: "POST" });
   if (!res.ok) throw new Error("process failed");
   return res.json();
 }
 
-export async function uploadImagery(id: string) {
-  const res = await fetch(`${BASE}/projects/${id}/imagery`, { method: "POST" });
+export async function uploadImagery(id: string): Promise<ProcessResponse> {
+  const res = await request(`/projects/${id}/imagery`, { method: "POST" });
   if (!res.ok) throw new Error("imagery failed");
   return res.json();
 }
@@ -54,18 +101,18 @@ export async function fetchExplanation(id: string): Promise<Explanation> {
   return getJson(`/parcels/${id}/explanation`);
 }
 
-export async function verifyParcel(id: string, geom: Parcel["geom"] | undefined) {
-  const res = await fetch(`${BASE}/parcels/${id}/verify`, {
+export async function verifyParcel(id: string, geom?: Parcel["geom"], correctionType = "boundary_adjust") {
+  const res = await request(`/parcels/${id}/verify`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ geom, correction_type: "boundary_adjust" }),
+    body: JSON.stringify({ geom, correction_type: correctionType }),
   });
   if (!res.ok) throw new Error("verify failed");
   return res.json();
 }
 
 export async function patchParcelGeom(id: string, geom: Parcel["geom"]) {
-  const res = await fetch(`${BASE}/parcels/${id}`, {
+  const res = await request(`/parcels/${id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ geom }),
@@ -77,3 +124,39 @@ export async function patchParcelGeom(id: string, geom: Parcel["geom"]) {
 export async function fetchQueue(projectId: string): Promise<SurveyQueueItem[]> {
   return getJson(`/survey-queue?project_id=${projectId}`);
 }
+
+export async function fetchChanges(projectId: string): Promise<ChangeDetectionItem[]> {
+  return getJson(`/change-detection?project_id=${projectId}`);
+}
+
+/** Live review data composed from the existing parcel, evidence, anomaly, and queue APIs. */
+export async function fetchReviewWorkspace(projectId: string): Promise<ReviewWorkspace> {
+  const [parcels, queue, changes] = await Promise.all([
+    fetchParcels(projectId),
+    fetchQueue(projectId),
+    fetchChanges(projectId),
+  ]);
+  const evidence = await Promise.all(parcels.map(async (parcel) => {
+    try {
+      return [parcel.id, await fetchExplanation(parcel.id)] as const;
+    } catch {
+      return [parcel.id, null] as const;
+    }
+  }));
+  return { parcels, queue, changes, explanations: Object.fromEntries(evidence) };
+}
+
+export async function assignSurveyQueueItem(itemId: string, assignedTo: string): Promise<SurveyQueueItem> {
+  const res = await request(`/survey-queue/${itemId}/assign`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ assigned_to: assignedTo }),
+  });
+  if (!res.ok) throw new Error("survey queue assignment failed");
+  return res.json();
+}
+
+export type ParcelHistory = { parcel_id: string; versions: { id: string; geom: Parcel["geom"]; captured_at: string; source: string }[] };
+export type ParcelComparison = { parcel_id: string; current_area_sqm: number; historical_area_sqm: number | null; area_difference_sqm: number | null; area_difference_percent: number | null; boundary_difference_sqm: number | null; method: string };
+export const fetchParcelHistory = (id: string) => getJson<ParcelHistory>(`/parcels/${id}/history`);
+export const fetchParcelComparison = (id: string) => getJson<ParcelComparison>(`/parcels/${id}/comparison`);

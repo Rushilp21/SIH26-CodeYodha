@@ -4,18 +4,31 @@ from sqlalchemy import text
 from backend.db.session import get_db
 from fastapi import Depends
 from sqlalchemy.orm import Session
+from sqlalchemy.exc import OperationalError, ProgrammingError, DataError
+from fastapi.responses import JSONResponse
 
 from backend.api.app.routers import (
     auth,
     change_detection,
     imagery,
     parcels,
+    parcel_history,
+    parcel_import,
     projects,
     survey_queue,
     vendors,
 )
 
 app = FastAPI(title="BhumiSetu API", version="0.1.0")
+
+@app.exception_handler(OperationalError)
+@app.exception_handler(ProgrammingError)
+async def database_unavailable(request, exc):
+    return JSONResponse(status_code=503, content={"detail": "Database unavailable or schema not initialized. Start PostGIS and run the database migrations."})
+
+@app.exception_handler(DataError)
+async def invalid_database_value(request, exc):
+    return JSONResponse(status_code=422, content={"detail": "Invalid identifier or value. Use the parcel, project and user IDs returned by this API."})
 
 app.add_middleware(
     CORSMiddleware,
@@ -29,6 +42,8 @@ app.include_router(auth.router)
 app.include_router(projects.router)
 app.include_router(imagery.router)
 app.include_router(parcels.router)
+app.include_router(parcel_history.router)
+app.include_router(parcel_import.router)
 app.include_router(survey_queue.router)
 app.include_router(change_detection.router)
 app.include_router(vendors.router)

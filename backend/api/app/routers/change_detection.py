@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from backend.api.app.schemas.models import ChangeDetectionItem
-from backend.db.models.orm import Anomaly, Parcel
+from backend.db.models.orm import Anomaly, Parcel, Project
 from backend.db.session import get_db
 
 router = APIRouter(prefix="/change-detection", tags=["change-detection"])
@@ -29,7 +29,7 @@ def list_changes(
             type=r.type,
             magnitude=r.magnitude,
             detected_at=r.detected_at,
-            demo=True,
+            demo=bool((project := db.get(Project, db.get(Parcel, r.parcel_id).project_id)) and project.name.startswith("DEMO")),
         )
         for r in rows
     ]
