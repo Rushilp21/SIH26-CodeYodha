@@ -1,0 +1,687 @@
+{
+  "timesteps": 20000,
+  "training_samples": 80,
+  "validation_samples": 26,
+  "alignment_before": 0.5834964318059158,
+  "alignment_after": 0.5838560837370236,
+  "all_valid": true,
+  "results": [
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.5847870899985234,
+        "reference": 0.0,
+        "overlap": 0.0704922987529983,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5856884963189563,
+        "reference": 0.0,
+        "overlap": 0.05411411938486219,
+        "displacement": 0.08333333333333333,
+        "jagged": 0.3333333333333333,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.021334188868189972,
+      "reward_std": 0.06010235785277521,
+      "reward_sum": -2.730776175128312,
+      "rejected_actions": 13,
+      "mean_vertex_displacement_m": 0.16666666666666666
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.5178547251077058,
+        "reference": 0.0,
+        "overlap": 0.006886501897148687,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5178547251077058,
+        "reference": 0.0,
+        "overlap": 0.006886501897148687,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.05075000000000001,
+      "reward_std": 0.08616952767655166,
+      "reward_sum": -6.496000000000011,
+      "rejected_actions": 32,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.6654937515656153,
+        "reference": 0.0,
+        "overlap": 0.007811524336789372,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.6654937515656153,
+        "reference": 0.0,
+        "overlap": 0.007811524336789372,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.025875000000000006,
+      "reward_std": 0.0658130638627317,
+      "reward_sum": -3.3119999999999923,
+      "rejected_actions": 16,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.5909682968631387,
+        "reference": 0.0,
+        "overlap": 0.05654032618843408,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5909682968631387,
+        "reference": 0.0,
+        "overlap": 0.05654032618843408,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": false,
+      "reward_mean": -0.020848252889471532,
+      "reward_std": 0.060262131869848905,
+      "reward_sum": -2.6685763698523517,
+      "rejected_actions": 13,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.6788732468460997,
+        "reference": 0.0,
+        "overlap": 0.016313528496135654,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.6788732468460997,
+        "reference": 0.0,
+        "overlap": 0.016313528496135654,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": false,
+      "reward_mean": -0.010790585360506186,
+      "reward_std": 0.04202529129754709,
+      "reward_sum": -1.3811949261447904,
+      "rejected_actions": 6,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.6559745396176974,
+        "reference": 0.0,
+        "overlap": 0.01585368045931291,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.6559745396176974,
+        "reference": 0.0,
+        "overlap": 0.01585368045931291,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.03541440687551891,
+      "reward_std": 0.0749933954933367,
+      "reward_sum": -4.533044080066419,
+      "rejected_actions": 22,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.705183536435167,
+        "reference": 0.0,
+        "overlap": 0.005473444193545274,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.705183536435167,
+        "reference": 0.0,
+        "overlap": 0.005473444193545274,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.01965625,
+      "reward_std": 0.05800463848639607,
+      "reward_sum": -2.5159999999999925,
+      "rejected_actions": 12,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.6550687057897449,
+        "reference": 0.0,
+        "overlap": 0.09541222509791901,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.6550687057897449,
+        "reference": 0.0,
+        "overlap": 0.09541222509791901,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.028984375000000003,
+      "reward_std": 0.06917922651243923,
+      "reward_sum": -3.7099999999999924,
+      "rejected_actions": 18,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.584883372609814,
+        "reference": 0.0,
+        "overlap": 0.029266185941197422,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5867828108991185,
+        "reference": 0.0,
+        "overlap": 0.01701195581556393,
+        "displacement": 0.046875,
+        "jagged": 0.1875,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.021011107152240967,
+      "reward_std": 0.06019508731319308,
+      "reward_sum": -2.6894217154868376,
+      "rejected_actions": 13,
+      "mean_vertex_displacement_m": 0.09375
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.648256205022335,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.648256205022335,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.04000545894447714,
+      "reward_std": 0.07713602304038647,
+      "reward_sum": -5.120698744893077,
+      "rejected_actions": 24,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.7435436317076286,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.7435436317076286,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.029906187948072333,
+      "reward_std": 0.06889886802608813,
+      "reward_sum": -3.8279920573532538,
+      "rejected_actions": 18,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.7174179883052906,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.7174179883052906,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.022148354201344776,
+      "reward_std": 0.05990717320676695,
+      "reward_sum": -2.8349893377721274,
+      "rejected_actions": 13,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.5633904964197427,
+        "reference": 0.0,
+        "overlap": 0.00013514032899227568,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5633904964197427,
+        "reference": 0.0,
+        "overlap": 0.00013514032899227568,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.004441902274910997,
+      "reward_std": 0.02467777532628537,
+      "reward_sum": -0.5685634911886076,
+      "rejected_actions": 2,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.5569107970222831,
+        "reference": 0.0,
+        "overlap": 7.863655394783504e-05,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5569107970222831,
+        "reference": 0.0,
+        "overlap": 7.863655394783504e-05,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.001112939129182647,
+      "reward_std": 0.001272759347389712,
+      "reward_sum": -0.14245620853537888,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.682359733308355,
+        "reference": 0.0,
+        "overlap": 0.013913254164811435,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.682359733308355,
+        "reference": 0.0,
+        "overlap": 0.013913254164811435,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": false,
+      "reward_mean": -0.017026142503310613,
+      "reward_std": 0.053338251968887404,
+      "reward_sum": -2.1793462404237545,
+      "rejected_actions": 10,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.5947668471684059,
+        "reference": 0.0,
+        "overlap": 0.05338409449172914,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5947668471684059,
+        "reference": 0.0,
+        "overlap": 0.05338409449172914,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.02140492749244744,
+      "reward_std": 0.06005397060310439,
+      "reward_sum": -2.739830719033268,
+      "rejected_actions": 13,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.5892185609166821,
+        "reference": 0.0,
+        "overlap": 0.03813574866940701,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5892185609166821,
+        "reference": 0.0,
+        "overlap": 0.03813574866940701,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.028984375000000003,
+      "reward_std": 0.06917922651243923,
+      "reward_sum": -3.7099999999999924,
+      "rejected_actions": 18,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.6282560272763172,
+        "reference": 0.0,
+        "overlap": 0.06760593119032882,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.6282560272763172,
+        "reference": 0.0,
+        "overlap": 0.06760593119032882,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0181015625,
+      "reward_std": 0.055774075497121385,
+      "reward_sum": -2.3169999999999926,
+      "rejected_actions": 11,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.47610472701489925,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.47610472701489925,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0014923554559354685,
+      "reward_std": 0.0018386532015564018,
+      "reward_sum": -0.19102149835974,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.5879478389397264,
+        "reference": 0.0,
+        "overlap": 0.04150729088810711,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5879478389397264,
+        "reference": 0.0,
+        "overlap": 0.04150729088810711,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.03364843749999999,
+      "reward_std": 0.07369612331261798,
+      "reward_sum": -4.306999999999996,
+      "rejected_actions": 21,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.5525585810343424,
+        "reference": 0.0,
+        "overlap": 0.06603350669067513,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5576601000502706,
+        "reference": 0.0,
+        "overlap": 0.020612427594221366,
+        "displacement": 0.14285714285714285,
+        "jagged": 0.5714285714285714,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.015677542283442862,
+      "reward_std": 0.05378338768680682,
+      "reward_sum": -2.0067254122806832,
+      "rejected_actions": 10,
+      "mean_vertex_displacement_m": 0.2857142857142857
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.551440165999035,
+        "reference": 0.0,
+        "overlap": 0.037028578695141645,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.551440165999035,
+        "reference": 0.0,
+        "overlap": 0.037028578695141645,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.028984375000000003,
+      "reward_std": 0.06917922651243923,
+      "reward_sum": -3.7099999999999924,
+      "rejected_actions": 18,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.2334577322471887,
+        "reference": 0.0,
+        "overlap": 0.028432597843007484,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2334577322471887,
+        "reference": 0.0,
+        "overlap": 0.028432597843007484,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.05075000000000001,
+      "reward_std": 0.08616952767655166,
+      "reward_sum": -6.496000000000011,
+      "rejected_actions": 32,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.315922185468177,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.315922185468177,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.004509752828503094,
+      "reward_std": 0.02467946397842116,
+      "reward_sum": -0.577248362048396,
+      "rejected_actions": 2,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.553429209937652,
+        "reference": 0.0,
+        "overlap": 0.03328403618990684,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.553429209937652,
+        "reference": 0.0,
+        "overlap": 0.03328403618990684,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.028984375000000003,
+      "reward_std": 0.06917922651243923,
+      "reward_sum": -3.709999999999992,
+      "rejected_actions": 18,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "before": {
+        "valid": true,
+        "alignment": 0.5368392343322436,
+        "reference": 0.0,
+        "overlap": 0.028219254228781868,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5382878209153811,
+        "reference": 0.0,
+        "overlap": 0.019179283898991834,
+        "displacement": 0.046875,
+        "jagged": 0.1875,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.013549413118752305,
+      "reward_std": 0.048158779584613357,
+      "reward_sum": -1.734324879200292,
+      "rejected_actions": 8,
+      "mean_vertex_displacement_m": 0.09375
+    }
+  ],
+  "alignment_improved": true
+}

@@ -16,7 +16,7 @@ from backend.api.app.schemas.models import (
 )
 from backend.api.app.services.geo import geojson_to_wkt, geom_to_geojson
 from backend.api.app.services.parcels import parcel_to_out
-from backend.db.models.orm import ConfidenceEvidence, Correction, Parcel, ParcelVersion, SurveyQueue
+from backend.db.models.orm import Anomaly, ConfidenceEvidence, Correction, Parcel, ParcelVersion, SurveyQueue
 from backend.db.session import get_db
 
 router = APIRouter(prefix="/parcels", tags=["parcels"])
@@ -83,22 +83,34 @@ def verify_parcel(parcel_id: str, body: VerifyIn, db: Session = Depends(get_db))
     if body.correction_type in ("split", "merge", "land_use_fix"):
         raise HTTPException(422, "Use a dedicated split/merge or land-use workflow; this endpoint verifies a single boundary")
     db.add(ParcelVersion(parcel_id=p.id, geom=p.geom, captured_at=datetime.now(timezone.utc), source=p.source))
+    stored_correction_type = body.correction_type
+    if body.correction_type == "reject" and body.review_label:
+        stored_correction_type = f"reject_{body.review_label.removeprefix('false_positive_')}"
     correction = Correction(
         id=str(uuid4()),
         parcel_id=p.id,
         original_geom=WKTElement(geojson_to_wkt(original), srid=4326),
         corrected_geom=WKTElement(geojson_to_wkt(corrected), srid=4326),
-        correction_type=body.correction_type,
+        correction_type=stored_correction_type,
     )
     db.add(correction)
     p.geom = WKTElement(geojson_to_wkt(corrected), srid=4326)
     p.status = "rejected" if body.correction_type == "reject" else "verified"
-    if body.correction_type != "reject":
-        p.source = "field_verified"
     if body.geom is not None:
         p.confidence_score = None
         p.health_score = None
         db.query(ConfidenceEvidence).filter(ConfidenceEvidence.parcel_id == p.id).delete()
+    if body.correction_type != "reject":
+        p.source = "field_verified"
+    elif body.review_label:
+        label = body.review_label.replace("_", " ")
+        db.add(Anomaly(parcel_id=p.id, type=body.review_label, magnitude=1.0))
+        db.add(ConfidenceEvidence(
+            parcel_id=p.id,
+            component="review_label",
+            score=0.0,
+            explanation=f"Human visual review labelled this geometry as {label}.",
+        ))
     p.version = (p.version or 1) + 1
     db.query(SurveyQueue).filter(SurveyQueue.parcel_id == p.id, SurveyQueue.status.in_(["pending", "assigned"])).update({"status": "completed"})
     db.flush()
@@ -108,7 +120,10 @@ def verify_parcel(parcel_id: str, body: VerifyIn, db: Session = Depends(get_db))
         parcel_id=str(p.id),
         status=p.status,
         correction_id=str(correction.id),
-        message=f"Correction recorded. Parcel marked {p.status}.",
+        message=(
+            f"Correction recorded. Parcel marked {p.status}"
+            + (f" as {body.review_label.replace('_', ' ')}." if body.review_label else ".")
+        ),
     )
 
 

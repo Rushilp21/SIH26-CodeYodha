@@ -1,0 +1,2767 @@
+{
+  "parcel_count_before": 98,
+  "parcel_count_after": 98,
+  "invalid_before": 0,
+  "invalid_after": 0,
+  "overlap_pairs_before": 0,
+  "overlap_pairs_after": 0,
+  "mean_boundary_displacement_m": 0.004290093721304476,
+  "alignment_before": 0.35292756624542004,
+  "alignment_after": 0.35409688409976187,
+  "accepted_parcels": 98,
+  "changed_parcels": 68,
+  "reward_mean": -0.0015546879850619818,
+  "reward_std": 0.00516405578910902,
+  "reward_sum": -19.5020060846175,
+  "parcels": [
+    {
+      "index": 0,
+      "parcel_id": "a9086b6d-ce3e-52ee-8139-1242919d0a28",
+      "before": {
+        "valid": true,
+        "alignment": 0.2678698605547349,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2686442965641618,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0029069767441860465,
+        "jagged": 0.011627906976744186,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.002814287969816436,
+      "reward_std": 0.017519359468059496,
+      "reward_sum": -0.36022886013650385,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.005813953488372093
+    },
+    {
+      "index": 1,
+      "parcel_id": "a7949a78-c093-5624-8310-98340a3b0772",
+      "before": {
+        "valid": true,
+        "alignment": 0.2691758507862687,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.270399675394098,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0013297872340425532,
+        "jagged": 0.005319148936170213,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.002827209520102664,
+      "reward_std": 0.017565328834513415,
+      "reward_sum": -0.36188281857314103,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.0026595744680851063
+    },
+    {
+      "index": 2,
+      "parcel_id": "a0d94d36-5a29-52bd-bec9-4d9ece75c21a",
+      "before": {
+        "valid": true,
+        "alignment": 0.41530763598469395,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4158084017690271,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0005269814502529511,
+        "jagged": 0.0021079258010118043,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010892325926415924,
+      "reward_std": 0.0008931844411642363,
+      "reward_sum": -0.13942177185812385,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0010539629005059021
+    },
+    {
+      "index": 3,
+      "parcel_id": "aa7fcb83-a501-5b1c-b520-6f685a9d248f",
+      "before": {
+        "valid": true,
+        "alignment": 0.25180576477820676,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.25211670249700546,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0005387931034482759,
+        "jagged": 0.0021551724137931034,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010653674988243523,
+      "reward_std": 0.0003768966963610057,
+      "reward_sum": -0.13636703984951712,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0010775862068965517
+    },
+    {
+      "index": 4,
+      "parcel_id": "2bb071f8-8352-5123-9b43-aec631d0d9d6",
+      "before": {
+        "valid": true,
+        "alignment": 0.23111107076207796,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.23111107076207796,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 5,
+      "parcel_id": "b41137fd-15fa-57a2-8ef9-f95d46af1b55",
+      "before": {
+        "valid": true,
+        "alignment": 0.29775167473902303,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.29904600388060015,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0020833333333333333,
+        "jagged": 0.008333333333333333,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011887239064606726,
+      "reward_std": 0.0009398118252621731,
+      "reward_sum": -0.15215666002696612,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.004166666666666667
+    },
+    {
+      "index": 6,
+      "parcel_id": "0873021a-e491-5107-99a1-8e122b61438c",
+      "before": {
+        "valid": true,
+        "alignment": 0.37439835102607805,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.37439835102607805,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 7,
+      "parcel_id": "d1a2648d-ef05-5682-9021-afd78504f761",
+      "before": {
+        "valid": true,
+        "alignment": 0.1986324501534303,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.20197287597693503,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.009868421052631578,
+        "jagged": 0.03548079547409238,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.002683168100490703,
+      "reward_std": 0.017533601062641277,
+      "reward_sum": -0.34344551686281005,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.019736842105263157
+    },
+    {
+      "index": 8,
+      "parcel_id": "930c5bcd-7bfd-5f6f-9c2c-674e5d600b16",
+      "before": {
+        "valid": true,
+        "alignment": 0.44890433829277754,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4494104177380602,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0015432098765432098,
+        "jagged": 0.004993932064042885,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011058877107834957,
+      "reward_std": 0.0005743212309491099,
+      "reward_sum": -0.14155362698028748,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0030864197530864196
+    },
+    {
+      "index": 9,
+      "parcel_id": "dfee24f5-b188-5521-8dca-bdcac069dd57",
+      "before": {
+        "valid": true,
+        "alignment": 0.3120321448271473,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.31518279466157156,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.002976190476190476,
+        "jagged": 0.011904761904761904,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0026706694736639463,
+      "reward_std": 0.01755398142075257,
+      "reward_sum": -0.3418456926289851,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.005952380952380952
+    },
+    {
+      "index": 10,
+      "parcel_id": "15695b96-1d13-55b1-bfd9-ad81d4641b67",
+      "before": {
+        "valid": true,
+        "alignment": 0.29666244611144066,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.29666244611144066,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 11,
+      "parcel_id": "cc890253-6d12-5734-82a5-f45171f5527a",
+      "before": {
+        "valid": true,
+        "alignment": 0.458850721285368,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.458850721285368,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 12,
+      "parcel_id": "a65d5ffa-7263-55b0-b633-9ffb21a10246",
+      "before": {
+        "valid": true,
+        "alignment": 0.2999510335115095,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3007835182361305,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0018115942028985507,
+        "jagged": 0.007246376811594203,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.004287170568547743,
+      "reward_std": 0.024673067703342717,
+      "reward_sum": -0.548757832774111,
+      "rejected_actions": 2,
+      "mean_vertex_displacement_m": 0.0036231884057971015
+    },
+    {
+      "index": 13,
+      "parcel_id": "532a1dd4-7239-558b-a834-42718ae922b8",
+      "before": {
+        "valid": true,
+        "alignment": 0.42094781699900824,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4225807231850922,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0031779661016949155,
+        "jagged": 0.012711864406779662,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.002677252798313591,
+      "reward_std": 0.017551090265137754,
+      "reward_sum": -0.34268835818413973,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.006355932203389831
+    },
+    {
+      "index": 14,
+      "parcel_id": "f3b50553-3300-59d7-a543-48c6e964b028",
+      "before": {
+        "valid": true,
+        "alignment": 0.4930736313884457,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4939460164556901,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0009615384615384616,
+        "jagged": 0.0038461538461538464,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.002652436571708398,
+      "reward_std": 0.017539327784748742,
+      "reward_sum": -0.339511881178675,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.0019230769230769232
+    },
+    {
+      "index": 15,
+      "parcel_id": "bcd5c582-61bf-5034-9f0f-b7a3eb454358",
+      "before": {
+        "valid": true,
+        "alignment": 0.196752629087617,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.196752629087617,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 16,
+      "parcel_id": "fbb89cba-640d-5a07-a3c5-0c11e2b8ea5d",
+      "before": {
+        "valid": true,
+        "alignment": 0.4986641524980466,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.500884171264867,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0030241935483870967,
+        "jagged": 0.012096774193548387,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0025709192690953108,
+      "reward_std": 0.017527101033034686,
+      "reward_sum": -0.32907766644419983,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.006048387096774193
+    },
+    {
+      "index": 17,
+      "parcel_id": "2a1277a4-5b76-532c-8887-02a483f93c08",
+      "before": {
+        "valid": true,
+        "alignment": 0.5595261277630925,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5595261277630925,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 18,
+      "parcel_id": "8a09c4e1-00b0-572a-9478-5c9b2ee9b634",
+      "before": {
+        "valid": true,
+        "alignment": 0.3823348758742213,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.38299090570459765,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0002828054298642534,
+        "jagged": 0.0011312217194570137,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0025740132690549424,
+      "reward_std": 0.01754100579756884,
+      "reward_sum": -0.3294736984390327,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.0005656108597285068
+    },
+    {
+      "index": 19,
+      "parcel_id": "0111b5aa-5583-5050-acc6-af9a561d3670",
+      "before": {
+        "valid": true,
+        "alignment": 0.2891336775695284,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2928905792844792,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0029450261780104713,
+        "jagged": 0.011280149199934418,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0009326408046053369,
+      "reward_std": 0.00140598158213798,
+      "reward_sum": -0.11937802298948318,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0058900523560209425
+    },
+    {
+      "index": 20,
+      "parcel_id": "ed807963-69ad-5dfc-b942-731e589bdf61",
+      "before": {
+        "valid": true,
+        "alignment": 0.34296197816729546,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.34296197816729546,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 21,
+      "parcel_id": "7d7685aa-aa26-520b-b63b-fdda3653cac9",
+      "before": {
+        "valid": true,
+        "alignment": 0.2757825969407956,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2757825969407956,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 22,
+      "parcel_id": "aac5e62e-79c1-5ba5-bb30-dd3f8f12b794",
+      "before": {
+        "valid": true,
+        "alignment": 0.3191391315000753,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.319487561006099,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0006720430107526882,
+        "jagged": 0.002688172043010753,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.001031979534960222,
+      "reward_std": 0.00045893844668603765,
+      "reward_sum": -0.13209338047490846,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0013440860215053765
+    },
+    {
+      "index": 23,
+      "parcel_id": "b244cb40-bbc8-536f-95e9-b7651ef71cf0",
+      "before": {
+        "valid": true,
+        "alignment": 0.2579770851880312,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2579770851880312,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 24,
+      "parcel_id": "dfec7f41-fcfe-590d-9b81-806db6f2f4dd",
+      "before": {
+        "valid": true,
+        "alignment": 0.3882359952355425,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.39133092761039734,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.01273148148148148,
+        "jagged": 0.046711210037467886,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011680798912200182,
+      "reward_std": 0.0011446102300157522,
+      "reward_sum": -0.14951422607616235,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.02546296296296296
+    },
+    {
+      "index": 25,
+      "parcel_id": "280074b1-6f7b-587e-87f1-c791e1abe1e0",
+      "before": {
+        "valid": true,
+        "alignment": 0.3381776098006715,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3418359189139058,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.003360215053763441,
+        "jagged": 0.01228284530183061,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0009670686725170153,
+      "reward_std": 0.0020929988327059055,
+      "reward_sum": -0.123784790082178,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.006720430107526882
+    },
+    {
+      "index": 26,
+      "parcel_id": "bef85b5c-4c23-55ee-834a-baec68c4639a",
+      "before": {
+        "valid": true,
+        "alignment": 0.2722106237585346,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2745703166971604,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.002840909090909091,
+        "jagged": 0.011363636363636364,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.002849323822488154,
+      "reward_std": 0.01755371065795643,
+      "reward_sum": -0.3647134492784837,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.005681818181818182
+    },
+    {
+      "index": 27,
+      "parcel_id": "4e1b9ba7-adf9-5dec-b244-217e3aa960ba",
+      "before": {
+        "valid": true,
+        "alignment": 0.46807967002193135,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.47006024916966754,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.002798507462686567,
+        "jagged": 0.01092080856453969,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010131597791895384,
+      "reward_std": 0.0009503847769815629,
+      "reward_sum": -0.12968445173626095,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.005597014925373134
+    },
+    {
+      "index": 28,
+      "parcel_id": "e1aa3df0-4ca1-5fef-9da4-0596ed3136a1",
+      "before": {
+        "valid": true,
+        "alignment": 0.2243963498622179,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2243963498622179,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 29,
+      "parcel_id": "adf852f9-583e-5241-9c57-4e598d4b552e",
+      "before": {
+        "valid": true,
+        "alignment": 0.2879816696513444,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2890627176966518,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0012755102040816326,
+        "jagged": 0.00510204081632653,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.004293316583779083,
+      "reward_std": 0.024720050986344604,
+      "reward_sum": -0.5495445227237227,
+      "rejected_actions": 2,
+      "mean_vertex_displacement_m": 0.002551020408163265
+    },
+    {
+      "index": 30,
+      "parcel_id": "0678eb7b-cdee-5329-bd62-bbe3fcedac59",
+      "before": {
+        "valid": true,
+        "alignment": 0.3482498466037214,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3492682895933588,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.001953125,
+        "jagged": 0.0078125,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0026534187183365485,
+      "reward_std": 0.01756314871062237,
+      "reward_sum": -0.33963759594707826,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.00390625
+    },
+    {
+      "index": 31,
+      "parcel_id": "9890ea88-9d21-5a06-b9f7-9ff2847eca82",
+      "before": {
+        "valid": true,
+        "alignment": 0.3722314845460157,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.372968891945978,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0008223684210526315,
+        "jagged": 0.003289473684210526,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011707355816521297,
+      "reward_std": 0.0010391773261153746,
+      "reward_sum": -0.14985415445147263,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.001644736842105263
+    },
+    {
+      "index": 32,
+      "parcel_id": "20434613-16f6-50ed-8168-5cc0e6432f43",
+      "before": {
+        "valid": true,
+        "alignment": 0.500750455694894,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5019367771844069,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0005387931034482759,
+        "jagged": 0.0021551724137931034,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011194150865095564,
+      "reward_std": 0.0010033080979778269,
+      "reward_sum": -0.14328513107322324,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0010775862068965517
+    },
+    {
+      "index": 33,
+      "parcel_id": "2e503e56-ac25-53e5-a18e-74014db144b9",
+      "before": {
+        "valid": true,
+        "alignment": 0.4716731297473113,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4716731297473113,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 34,
+      "parcel_id": "3a4e4141-8ea5-502e-be80-cb9412fab022",
+      "before": {
+        "valid": true,
+        "alignment": 0.3288598113382856,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3288598113382856,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 35,
+      "parcel_id": "3d899fe0-f7b7-58ca-afa3-ae2af43ea5ab",
+      "before": {
+        "valid": true,
+        "alignment": 0.34106683017065126,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3427197835408151,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0048828125,
+        "jagged": 0.017578125,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010940644237797006,
+      "reward_std": 0.0009111449501253645,
+      "reward_sum": -0.1400402462438017,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.009765625
+    },
+    {
+      "index": 36,
+      "parcel_id": "a64e7306-7389-5b77-ad63-d9e238782b1d",
+      "before": {
+        "valid": true,
+        "alignment": 0.3800108019883434,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3825154099613428,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.008152173913043478,
+        "jagged": 0.03260869565217391,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.002619292603151549,
+      "reward_std": 0.017567618934569904,
+      "reward_sum": -0.33526945320339835,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.016304347826086956
+    },
+    {
+      "index": 37,
+      "parcel_id": "90b9be7b-513b-5cfa-8545-491651f6a6fc",
+      "before": {
+        "valid": true,
+        "alignment": 0.25527420003588003,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.25681995910902816,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0020833333333333333,
+        "jagged": 0.008333333333333333,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.001174452542010864,
+      "reward_std": 0.0011504598058356343,
+      "reward_sum": -0.15032992537739062,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.004166666666666667
+    },
+    {
+      "index": 38,
+      "parcel_id": "d17566fe-849d-532a-8461-365c023bc95b",
+      "before": {
+        "valid": true,
+        "alignment": 0.4630702069650094,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.46560106861094636,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.005859375,
+        "jagged": 0.0234375,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010704930661598173,
+      "reward_std": 0.0007770861301205649,
+      "reward_sum": -0.13702311246845664,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.01171875
+    },
+    {
+      "index": 39,
+      "parcel_id": "7551c906-af84-5d7b-9935-a1b6e8a11e05",
+      "before": {
+        "valid": true,
+        "alignment": 0.42746628789852065,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4279348698134224,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0013297872340425532,
+        "jagged": 0.005319148936170213,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0012097131286459887,
+      "reward_std": 0.0008255990635146382,
+      "reward_sum": -0.15484328046668658,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0026595744680851063
+    },
+    {
+      "index": 40,
+      "parcel_id": "10c900d2-38c3-5841-9288-7d4ef835a988",
+      "before": {
+        "valid": true,
+        "alignment": 0.3251900013613825,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3280674371441516,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0012417218543046358,
+        "jagged": 0.004966887417218543,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010166279691252908,
+      "reward_std": 0.001855268949499976,
+      "reward_sum": -0.13012838004803726,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0024834437086092716
+    },
+    {
+      "index": 41,
+      "parcel_id": "e9e31da8-42b6-579e-a01d-292926326235",
+      "before": {
+        "valid": true,
+        "alignment": 0.41683250789841014,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.41683250789841014,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 42,
+      "parcel_id": "ffa550be-4b39-5265-b495-b0478c2b514b",
+      "before": {
+        "valid": true,
+        "alignment": 0.24113874851415554,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.24113874851415554,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010106434256304058,
+      "reward_std": 0.00011994531529845628,
+      "reward_sum": -0.12936235848069197,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 43,
+      "parcel_id": "8d01f095-cfb8-5524-b794-d3badcd27577",
+      "before": {
+        "valid": true,
+        "alignment": 0.4785620520512263,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4785620520512263,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 44,
+      "parcel_id": "9016ca45-705c-512c-afe9-b4d404d382de",
+      "before": {
+        "valid": true,
+        "alignment": 0.3231789044414957,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3243827020439009,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.003826530612244898,
+        "jagged": 0.013357316269132117,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011512100604126585,
+      "reward_std": 0.0008300766746331897,
+      "reward_sum": -0.14735488773282032,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.007653061224489796
+    },
+    {
+      "index": 45,
+      "parcel_id": "a82f47c5-7a6b-5ee7-ad26-99b18ecda94b",
+      "before": {
+        "valid": true,
+        "alignment": 0.35725163683916134,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.35834950550148886,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.001913265306122449,
+        "jagged": 0.007653061224489796,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010810069413038997,
+      "reward_std": 0.0008098403321619407,
+      "reward_sum": -0.13836888848689918,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.003826530612244898
+    },
+    {
+      "index": 46,
+      "parcel_id": "edb4575f-a5a4-5573-9214-a0d155c9f63e",
+      "before": {
+        "valid": true,
+        "alignment": 0.18496895503873625,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.18496895503873625,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 47,
+      "parcel_id": "6eab83ef-a745-5d8a-8a50-f5b99815db3e",
+      "before": {
+        "valid": true,
+        "alignment": 0.5343647950018445,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5350908385589719,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0006720430107526882,
+        "jagged": 0.002688172043010753,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.00112847411803656,
+      "reward_std": 0.0008006389383455778,
+      "reward_sum": -0.14444468710867972,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0013440860215053765
+    },
+    {
+      "index": 48,
+      "parcel_id": "6e62a720-f3bd-5cdc-9c4b-e383788f340e",
+      "before": {
+        "valid": true,
+        "alignment": 0.4532366497442126,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.45508210981885594,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0030864197530864196,
+        "jagged": 0.012345679012345678,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010957111343543424,
+      "reward_std": 0.0018573578336340763,
+      "reward_sum": -0.14025102519735586,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.006172839506172839
+    },
+    {
+      "index": 49,
+      "parcel_id": "f83c52a4-4c3a-5e66-af30-f3897c8035d4",
+      "before": {
+        "valid": true,
+        "alignment": 0.34451858994240564,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3479348747059703,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.014112903225806451,
+        "jagged": 0.056451612903225805,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0012468944804939707,
+      "reward_std": 0.0012378544981382295,
+      "reward_sum": -0.15960249350322828,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.028225806451612902
+    },
+    {
+      "index": 50,
+      "parcel_id": "c052847c-6e8a-5fe9-baf6-d88b2afb01cb",
+      "before": {
+        "valid": true,
+        "alignment": 0.24561725122233233,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.24750122730620205,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.007102272727272727,
+        "jagged": 0.016051936192820696,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011561406776469363,
+      "reward_std": 0.0013485671176758371,
+      "reward_sum": -0.14798600673880788,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.014204545454545454
+    },
+    {
+      "index": 51,
+      "parcel_id": "f6229b37-ed74-50a3-b90d-c3b316e7b212",
+      "before": {
+        "valid": true,
+        "alignment": 0.2829038114286959,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2829038114286959,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 52,
+      "parcel_id": "cee66f7e-49ae-510e-b66b-7ebf535f3c86",
+      "before": {
+        "valid": true,
+        "alignment": 0.39559743988017243,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.39708519416550797,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.005208333333333333,
+        "jagged": 0.01685452071614474,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.001221955425407735,
+      "reward_std": 0.0010842283488288018,
+      "reward_sum": -0.1564102944521901,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.010416666666666666
+    },
+    {
+      "index": 53,
+      "parcel_id": "11d12f52-d744-5ae3-84ca-0588e0dbb8db",
+      "before": {
+        "valid": true,
+        "alignment": 0.3184626451693475,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.32266046362929046,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.006215469613259668,
+        "jagged": 0.023578969321492005,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010605036390228194,
+      "reward_std": 0.0016227198294160743,
+      "reward_sum": -0.13574446579492092,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.012430939226519336
+    },
+    {
+      "index": 54,
+      "parcel_id": "a1472dea-bce8-5c3f-bf42-b9a1ef836192",
+      "before": {
+        "valid": true,
+        "alignment": 0.4696525192509095,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.47386204342668253,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0017857142857142857,
+        "jagged": 0.007142857142857143,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.000935758814322203,
+      "reward_std": 0.0015828706200110131,
+      "reward_sum": -0.11977712823324202,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0035714285714285713
+    },
+    {
+      "index": 55,
+      "parcel_id": "c68dbf14-40fe-5118-8941-7fb42e0902b9",
+      "before": {
+        "valid": true,
+        "alignment": 0.30130964595203596,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3023176696151495,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0014534883720930232,
+        "jagged": 0.005813953488372093,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0027362526449520768,
+      "reward_std": 0.01753374324624251,
+      "reward_sum": -0.3502403385538658,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.0029069767441860465
+    },
+    {
+      "index": 56,
+      "parcel_id": "89c75daf-80e0-5001-b74c-cd67ace10e24",
+      "before": {
+        "valid": true,
+        "alignment": 0.42824637951950234,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4304933692328632,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.003564638783269962,
+        "jagged": 0.012890882839768282,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0025679555962856973,
+      "reward_std": 0.017589682954298747,
+      "reward_sum": -0.3286983163245693,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.007129277566539924
+    },
+    {
+      "index": 57,
+      "parcel_id": "7a9df652-a747-59a8-a2b2-20f9a13db189",
+      "before": {
+        "valid": true,
+        "alignment": 0.4327867664396763,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4330512474601467,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0005252100840336134,
+        "jagged": 0.0021008403361344537,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011013255011153695,
+      "reward_std": 0.000710567163679036,
+      "reward_sum": -0.14096966414276732,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0010504201680672268
+    },
+    {
+      "index": 58,
+      "parcel_id": "e9d75024-0301-5612-8d78-1f37a24aacea",
+      "before": {
+        "valid": true,
+        "alignment": 0.2804789872219165,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2804789872219165,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 59,
+      "parcel_id": "4097828d-f17a-5c45-a24b-5c85df3c4ce3",
+      "before": {
+        "valid": true,
+        "alignment": 0.2781059240611891,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2781059240611891,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 60,
+      "parcel_id": "46c22497-f5c4-5d0a-8c38-7ae59b1c2905",
+      "before": {
+        "valid": true,
+        "alignment": 0.5029399509852132,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.504164368690302,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0015,
+        "jagged": 0.006,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.002614689396445511,
+      "reward_std": 0.0175952351266283,
+      "reward_sum": -0.33468024274502545,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.003
+    },
+    {
+      "index": 61,
+      "parcel_id": "821487b9-76c0-58e2-a4ef-feb38d0e1f98",
+      "before": {
+        "valid": true,
+        "alignment": 0.2616685406925778,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2627336336299777,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0010775862068965517,
+        "jagged": 0.004310344827586207,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.002654102714841123,
+      "reward_std": 0.017553200154133117,
+      "reward_sum": -0.3397251474996638,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.0021551724137931034
+    },
+    {
+      "index": 62,
+      "parcel_id": "9c17cd00-d7a9-5730-9cd4-d195007bb54f",
+      "before": {
+        "valid": true,
+        "alignment": 0.42238416833182174,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.42563250040014583,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.011160714285714286,
+        "jagged": 0.04202773911773704,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.00744560319361654,
+      "reward_std": 0.03460954352490135,
+      "reward_sum": -0.9530372087829171,
+      "rejected_actions": 4,
+      "mean_vertex_displacement_m": 0.022321428571428572
+    },
+    {
+      "index": 63,
+      "parcel_id": "a958d490-e0c1-5503-bbf0-0ce84bb54842",
+      "before": {
+        "valid": true,
+        "alignment": 0.3430204532730083,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.34378362633287907,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0013157894736842105,
+        "jagged": 0.004877772080508615,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011275868918614348,
+      "reward_std": 0.0010261922087412606,
+      "reward_sum": -0.14433112215826369,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.002631578947368421
+    },
+    {
+      "index": 64,
+      "parcel_id": "091a893c-e9a3-5d37-8e1b-80d254c1385e",
+      "before": {
+        "valid": true,
+        "alignment": 0.44334684188167256,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.44439211798210937,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.001358695652173913,
+        "jagged": 0.005434782608695652,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011234519973852028,
+      "reward_std": 0.0006774871246307998,
+      "reward_sum": -0.14380185566530598,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.002717391304347826
+    },
+    {
+      "index": 65,
+      "parcel_id": "9ab2249c-5d78-5ba4-bfbd-d987b8a1a087",
+      "before": {
+        "valid": true,
+        "alignment": 0.36032624915242195,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3610350824892521,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.002240143369175627,
+        "jagged": 0.008960573476702509,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010724391704477506,
+      "reward_std": 0.0007056588086883632,
+      "reward_sum": -0.1372722138173121,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.004480286738351254
+    },
+    {
+      "index": 66,
+      "parcel_id": "a643c64a-560b-58f7-bf97-48a0d840f03c",
+      "before": {
+        "valid": true,
+        "alignment": 0.5904050186897317,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5904050186897317,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 67,
+      "parcel_id": "a370c932-10e0-5854-ba94-f9c641140398",
+      "before": {
+        "valid": true,
+        "alignment": 0.2984132778753216,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.30169970414135605,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0044014084507042256,
+        "jagged": 0.01553721966538106,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010685172700085582,
+      "reward_std": 0.0017140411653058098,
+      "reward_sum": -0.1367702105610955,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.008802816901408451
+    },
+    {
+      "index": 68,
+      "parcel_id": "64d0eed3-2ee1-5807-9874-8ccf38e78b0c",
+      "before": {
+        "valid": true,
+        "alignment": 0.24434191562856236,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.24476023064926267,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.001736111111111111,
+        "jagged": 0.006944444444444444,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0027348432054945266,
+      "reward_std": 0.01751667611795613,
+      "reward_sum": -0.3500599303032994,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.003472222222222222
+    },
+    {
+      "index": 69,
+      "parcel_id": "1ccb82eb-aa82-53c2-a6d3-ac0e12d01b33",
+      "before": {
+        "valid": true,
+        "alignment": 0.360307853979369,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.360307853979369,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 70,
+      "parcel_id": "22691bb3-0294-5a63-aa60-b8f9b56541f8",
+      "before": {
+        "valid": true,
+        "alignment": 0.3428034861572087,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3435687948949635,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0021551724137931034,
+        "jagged": 0.008620689655172414,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0012383598294570405,
+      "reward_std": 0.0011955880892569044,
+      "reward_sum": -0.1585100581705012,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.004310344827586207
+    },
+    {
+      "index": 71,
+      "parcel_id": "95fd83db-13f4-5cbb-ba28-afbbaac07378",
+      "before": {
+        "valid": true,
+        "alignment": 0.4481240565267702,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4481240565267702,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 72,
+      "parcel_id": "32b9ac5e-103d-56c7-b426-e321804fe6de",
+      "before": {
+        "valid": true,
+        "alignment": 0.4085051016882062,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4085051016882062,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 73,
+      "parcel_id": "49ab9f48-a001-5326-a894-b0a309f1ef76",
+      "before": {
+        "valid": true,
+        "alignment": 0.30032947318007547,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3013733150437474,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.002976190476190476,
+        "jagged": 0.011904761904761904,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010731049705112925,
+      "reward_std": 0.0007932435054849007,
+      "reward_sum": -0.13735743622544547,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.005952380952380952
+    },
+    {
+      "index": 74,
+      "parcel_id": "e2add082-426c-5f72-8480-998673ac39f4",
+      "before": {
+        "valid": true,
+        "alignment": 0.3310215988506873,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3310215988506873,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 75,
+      "parcel_id": "13cee3d5-6f2c-5ff9-b0e6-8719fecd42fa",
+      "before": {
+        "valid": true,
+        "alignment": 0.1104158393961067,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.1104158393961067,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 76,
+      "parcel_id": "368593b2-d74b-58fc-b0d5-5e35fdcf7d25",
+      "before": {
+        "valid": true,
+        "alignment": 0.12123450252693146,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.12123450252693146,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 77,
+      "parcel_id": "15bd6a8d-34f1-5825-aa74-b826304220dc",
+      "before": {
+        "valid": true,
+        "alignment": 0.5580106591805816,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5603014181057612,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.004441624365482234,
+        "jagged": 0.015826887537237527,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0009865336308515055,
+      "reward_std": 0.000396100820603456,
+      "reward_sum": -0.12627630474899273,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.008883248730964468
+    },
+    {
+      "index": 78,
+      "parcel_id": "227f00b8-1c25-5482-aa1d-cb75903d3c89",
+      "before": {
+        "valid": true,
+        "alignment": 0.17788177666564783,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.17788177666564783,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.001027229558123509,
+      "reward_std": 0.00022180359149129273,
+      "reward_sum": -0.13148538343980917,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 79,
+      "parcel_id": "83b7edbb-bab3-557c-97ee-9206c2674dc2",
+      "before": {
+        "valid": true,
+        "alignment": 0.46326816889146966,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.46506844740360975,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.003125,
+        "jagged": 0.0125,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010354563135772355,
+      "reward_std": 0.0008388350872937672,
+      "reward_sum": -0.13253840813788617,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.00625
+    },
+    {
+      "index": 80,
+      "parcel_id": "57bc2e62-d385-5dec-be49-ccee69236536",
+      "before": {
+        "valid": true,
+        "alignment": 0.34795983927324414,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3489222531206906,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.002717391304347826,
+        "jagged": 0.010869565217391304,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0028419171854117816,
+      "reward_std": 0.017545922748188093,
+      "reward_sum": -0.36376539973270805,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.005434782608695652
+    },
+    {
+      "index": 81,
+      "parcel_id": "eaff1947-62f6-5d19-8ce9-a2590cc353a7",
+      "before": {
+        "valid": true,
+        "alignment": 0.37709955669318634,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3790108614290754,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0032216494845360823,
+        "jagged": 0.01288659793814433,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010163093179293091,
+      "reward_std": 0.0006706411515932135,
+      "reward_sum": -0.1300875926949516,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.006443298969072165
+    },
+    {
+      "index": 82,
+      "parcel_id": "dcd7f51d-be26-5f0c-b977-af054717b141",
+      "before": {
+        "valid": true,
+        "alignment": 0.27179729263298213,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2730814452127864,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.005319148936170213,
+        "jagged": 0.02127659574468085,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0028171088945825136,
+      "reward_std": 0.017573210948899312,
+      "reward_sum": -0.3605899385065618,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.010638297872340425
+    },
+    {
+      "index": 83,
+      "parcel_id": "55fd6ff7-e827-57ba-8fbd-06762c35172c",
+      "before": {
+        "valid": true,
+        "alignment": 0.4340481761222084,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.4340481761222084,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 84,
+      "parcel_id": "02206537-e41b-525d-88d6-db68d8e040ed",
+      "before": {
+        "valid": true,
+        "alignment": 0.3809739037727316,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3817561063915491,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0012254901960784314,
+        "jagged": 0.004901960784313725,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010861943357253225,
+      "reward_std": 0.0005363503370901892,
+      "reward_sum": -0.1390328749728413,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0024509803921568627
+    },
+    {
+      "index": 85,
+      "parcel_id": "58f6ade1-ba75-551a-8ccf-dd2100f61a5a",
+      "before": {
+        "valid": true,
+        "alignment": 0.5255397940054536,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5273742183732489,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.001968503937007874,
+        "jagged": 0.007874015748031496,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010121223048080697,
+      "reward_std": 0.0006765486295841612,
+      "reward_sum": -0.12955165501543295,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.003937007874015748
+    },
+    {
+      "index": 86,
+      "parcel_id": "c1adfb1e-2730-5bd2-9973-f6c989dc8b07",
+      "before": {
+        "valid": true,
+        "alignment": 0.2545515079206477,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2551810174093892,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0008012820512820513,
+        "jagged": 0.003205128205128205,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0042301675162405095,
+      "reward_std": 0.02467798949432731,
+      "reward_sum": -0.5414614420787852,
+      "rejected_actions": 2,
+      "mean_vertex_displacement_m": 0.0016025641025641025
+    },
+    {
+      "index": 87,
+      "parcel_id": "627b2f76-8538-5b1e-92b4-ef38d44e7855",
+      "before": {
+        "valid": true,
+        "alignment": 0.39768513043721515,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.39851749408990145,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0025,
+        "jagged": 0.01,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0012278122729421892,
+      "reward_std": 0.0011177593598576355,
+      "reward_sum": -0.15715997093660025,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.005
+    },
+    {
+      "index": 88,
+      "parcel_id": "e72c8063-8396-5289-b6fb-d2ef99b09588",
+      "before": {
+        "valid": true,
+        "alignment": 0.3081806831372281,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3081806831372281,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010000000000000005,
+      "reward_std": 4.336808689942018e-19,
+      "reward_sum": -0.12800000000000009,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 89,
+      "parcel_id": "65357548-6879-580f-afd7-70d79b311b0f",
+      "before": {
+        "valid": true,
+        "alignment": 0.34933375054970384,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.35392595175653696,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.00390625,
+        "jagged": 0.015625,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011231400218306305,
+      "reward_std": 0.0014647569298001297,
+      "reward_sum": -0.14376192279432073,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0078125
+    },
+    {
+      "index": 90,
+      "parcel_id": "bd6060d2-ea0d-5bb8-ad9b-aa236ae757aa",
+      "before": {
+        "valid": true,
+        "alignment": 0.513981223727266,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.513981223727266,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010361024048867302,
+      "reward_std": 0.0012461012318986764,
+      "reward_sum": -0.1326211078255015,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0
+    },
+    {
+      "index": 91,
+      "parcel_id": "eeb5ee3c-640f-5451-adc3-001d91fc8577",
+      "before": {
+        "valid": true,
+        "alignment": 0.30690714763477445,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3084210055336977,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.001445086705202312,
+        "jagged": 0.005780346820809248,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.002618866327978464,
+      "reward_std": 0.01768077886103457,
+      "reward_sum": -0.33521488998124344,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.002890173410404624
+    },
+    {
+      "index": 92,
+      "parcel_id": "6cca8c1a-a98a-5122-bc5d-90ef576e1296",
+      "before": {
+        "valid": true,
+        "alignment": 0.3124613771215081,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.3145453562028706,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0017123287671232876,
+        "jagged": 0.00684931506849315,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010790675319829845,
+      "reward_std": 0.000824403581740157,
+      "reward_sum": -0.13812064409382205,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.003424657534246575
+    },
+    {
+      "index": 93,
+      "parcel_id": "fdb27dcc-aca5-5344-a170-4898e7ba4c4b",
+      "before": {
+        "valid": true,
+        "alignment": 0.5539875039830804,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.5555655307446917,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.003586065573770492,
+        "jagged": 0.013261449547834363,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010986851103340126,
+      "reward_std": 0.0008196321337596677,
+      "reward_sum": -0.14063169412275364,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.007172131147540984
+    },
+    {
+      "index": 94,
+      "parcel_id": "03b1d994-2732-5a22-b1c1-1f0e454032b5",
+      "before": {
+        "valid": true,
+        "alignment": 0.2976644992207487,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2992691700346768,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0020161290322580645,
+        "jagged": 0.008064516129032258,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0011505842325962817,
+      "reward_std": 0.0011860230418455076,
+      "reward_sum": -0.1472747817723241,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.004032258064516129
+    },
+    {
+      "index": 95,
+      "parcel_id": "4cde4457-bee3-5d90-a2a0-2ee90f5e98e0",
+      "before": {
+        "valid": true,
+        "alignment": 0.25626797329944867,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2569427803779642,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0012626262626262627,
+        "jagged": 0.005050505050505051,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.001063126230840461,
+      "reward_std": 0.0004198371902562753,
+      "reward_sum": -0.13608015754757904,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.0025252525252525255
+    },
+    {
+      "index": 96,
+      "parcel_id": "bc91d53c-ba07-5ff9-9a07-dc3b5b84e732",
+      "before": {
+        "valid": true,
+        "alignment": 0.23566506740947565,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.23928093165159225,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.00528169014084507,
+        "jagged": 0.02112676056338028,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.0010767068154579561,
+      "reward_std": 0.001225924255205176,
+      "reward_sum": -0.1378184723786184,
+      "rejected_actions": 0,
+      "mean_vertex_displacement_m": 0.01056338028169014
+    },
+    {
+      "index": 97,
+      "parcel_id": "b0b80b42-0201-5b1f-ae10-ec536e557267",
+      "before": {
+        "valid": true,
+        "alignment": 0.25516190147027373,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0,
+        "jagged": 0.0,
+        "coverage": 1.0
+      },
+      "after": {
+        "valid": true,
+        "alignment": 0.2564896588058521,
+        "reference": 0.0,
+        "overlap": 0.0,
+        "displacement": 0.0017772511848341231,
+        "jagged": 0.0071090047393364926,
+        "coverage": 1.0
+      },
+      "accepted": true,
+      "reward_mean": -0.002595639973286372,
+      "reward_std": 0.017632324195378947,
+      "reward_sum": -0.33224191658065566,
+      "rejected_actions": 1,
+      "mean_vertex_displacement_m": 0.0035545023696682463
+    }
+  ],
+  "crs_for_metrics": "EPSG:28992",
+  "source_crs": "OGC:CRS84",
+  "policy_sha256": "36f4975a32bccffc348e88edeab2d4ba8ad88c180503f6316af39efae7223b29",
+  "inference_rollouts_per_parcel": 3,
+  "status": "20,000-step debug policy; evidence-guided but not production validated"
+}

@@ -11,6 +11,12 @@ QueueStatus = Literal["pending", "assigned", "completed"]
 ConfidenceBand = Literal["HIGH", "MEDIUM", "LOW"]
 UserRole = Literal["surveyor", "gis_expert", "admin", "vendor"]
 CorrectionType = Literal["boundary_adjust", "reject", "land_use_fix", "split", "merge"]
+FalsePositiveLabel = Literal[
+    "false_positive_building",
+    "false_positive_road",
+    "false_positive_canal",
+    "false_positive_other",
+]
 
 
 class GeoJSONGeometry(BaseModel):
@@ -73,6 +79,9 @@ class ProjectStatusOut(BaseModel):
     status: str
     parcel_count: int
     demo: bool = False
+    evidence_parcel_count: int = 0
+    rl_evidence_parcel_count: int = 0
+    pipeline_provenance: str | None = None
 
 
 class ParcelOut(BaseModel):
@@ -100,7 +109,14 @@ class ParcelPatch(BaseModel):
 class VerifyIn(BaseModel):
     geom: GeoJSONGeometry | None = None
     correction_type: CorrectionType = "boundary_adjust"
+    review_label: FalsePositiveLabel | None = None
     notes: str | None = None
+
+    @model_validator(mode="after")
+    def label_requires_rejection(self):
+        if self.review_label is not None and self.correction_type != "reject":
+            raise ValueError("False-positive review labels require correction_type=reject")
+        return self
 
 
 class VerifyOut(BaseModel):

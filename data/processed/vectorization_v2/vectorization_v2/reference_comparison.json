@@ -1,0 +1,33 @@
+{
+  "crs_for_metrics": "EPSG:28992",
+  "reference_source": "CadastreVision brk_reference closed faces in target AOI",
+  "target_reference_used_for_parameter_selection": false,
+  "old_cleaned_output": {
+    "candidate_count": 98,
+    "reference_count": 222,
+    "invalid_candidates": 0,
+    "candidate_mean_best_iou": 0.05012474372619305,
+    "reference_mean_best_iou": 0.022607466001645506,
+    "harmonic_mean_best_iou": 0.03116070428415345,
+    "reference_matched_iou_50": 0,
+    "reference_matched_iou_75": 0,
+    "mean_symmetric_boundary_distance_m": 55.21019182352827,
+    "median_candidate_area_m2": 79.90625011715838,
+    "median_reference_area_m2": 9726.617468496097
+  },
+  "new_enclosed_face_vectorization": {
+    "candidate_count": 106,
+    "reference_count": 222,
+    "invalid_candidates": 0,
+    "candidate_mean_best_iou": 0.09092088589825147,
+    "reference_mean_best_iou": 0.06474978974495725,
+    "harmonic_mean_best_iou": 0.0756354171524258,
+    "reference_matched_iou_50": 5,
+    "reference_matched_iou_75": 1,
+    "mean_symmetric_boundary_distance_m": 65.65014128910124,
+    "median_candidate_area_m2": 77.34375011422617,
+    "median_reference_area_m2": 9726.617468496097
+  },
+  "harmonic_iou_delta": 0.044474712868272356,
+  "boundary_distance_delta_m": 10.439949465572973
+}
