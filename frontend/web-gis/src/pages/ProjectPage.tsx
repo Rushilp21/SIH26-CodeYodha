@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { ErrorState, LoadingState, StatusBadge } from "@shared/components";
-import { fetchChanges, fetchExplanation, fetchParcel, fetchParcels, fetchProjectStatus, verifyParcel } from "../api/client";
+import { fetchChanges, fetchExplanation, fetchParcel, fetchParcels, fetchProjectStatus, verifyParcel, type FalsePositiveLabel } from "../api/client";
 import { ProcessingPanel } from "../components/ProcessingPanel";
 import { Icon } from "../components/Icon";
 import { ParcelDetailsPanel } from "../components/ParcelDetailsPanel";
@@ -52,6 +52,28 @@ export function ProjectPage() {
     }
   }
 
+  async function rejectFalsePositive(label: FalsePositiveLabel) {
+    if (!selectedParcel) return;
+    const readable = label.replace("false_positive_", "").replace("_", " ");
+    if (!window.confirm(`Reject parcel ${selectedParcel.id} as a ${readable} false positive?`)) return;
+    setVerifying(true);
+    setFeedback(null);
+    try {
+      const result = await verifyParcel(selectedParcel.id, undefined, "reject", label);
+      const [updated, nextChanges, nextExplanation] = await Promise.all([
+        fetchParcel(selectedParcel.id), fetchChanges(projectId), fetchExplanation(selectedParcel.id),
+      ]);
+      parcels.setData((current) => current?.map((parcel) => parcel.id === updated.id ? updated : parcel) ?? null);
+      changes.setData(nextChanges);
+      explanation.setData(nextExplanation);
+      setFeedback(result.message);
+    } catch (error) {
+      setFeedback(error instanceof Error ? error.message : "False-positive label could not be saved.");
+    } finally {
+      setVerifying(false);
+    }
+  }
+
   async function refreshOutputs() {
     const [nextProject, nextParcels, nextChanges] = await Promise.all([fetchProjectStatus(projectId), fetchParcels(projectId), fetchChanges(projectId)]);
     project.setData(nextProject); parcels.setData(nextParcels); changes.setData(nextChanges);
@@ -65,7 +87,7 @@ export function ProjectPage() {
     <div className="gis-workspace">
       <aside className="map-sidebar">
         <div className="map-sidebar-header"><div><p className="card-kicker">Project workspace</p><h1>{project.data?.name ?? "Project"}</h1></div><Link to="/" className="back-link">Dashboard</Link></div>
-        <div className="map-sidebar-block"><div className="project-status"><StatusBadge status={project.data?.status ?? "created"} /><span>{project.data?.parcel_count ?? 0} parcels</span></div><ProcessingPanel key={projectId} projectId={projectId} onRefresh={refreshOutputs} /></div>
+        <div className="map-sidebar-block"><div className="project-status"><StatusBadge status={project.data?.status ?? "created"} /><span>{project.data?.parcel_count ?? 0} parcels</span></div><ProcessingPanel key={projectId} projectId={projectId} onRefresh={refreshOutputs} pipelineProvenance={project.data?.pipeline_provenance} rlEvidenceCount={project.data?.rl_evidence_parcel_count} /></div>
         <div className="map-sidebar-block"><h2>Filter by status</h2><div className="filter-chips">{(Object.keys(statusLabels) as StatusFilter[]).map((status) => <button key={status} type="button" className={statusFilter === status ? "active" : ""} onClick={() => setStatusFilter(status)}>{statusLabels[status]}</button>)}</div></div>
         <div className="map-sidebar-block"><h2>Data layers</h2><LayerToggle label="AI parcel boundaries" checked={showAi} onChange={setShowAi} /><LayerToggle label="Existing GIS parcels" checked={showExisting} onChange={setShowExisting} /><LayerToggle label="Field-verified parcels" checked={showField} onChange={setShowField} /></div>
         <div className="map-sidebar-block"><h2>Map legend</h2><Legend color="#3B82F6" label="AI processed" /><Legend color="#F59E0B" label="Needs review" /><Legend color="#10B981" label="Verified" /><Legend color="#EF4444" label="Rejected" /></div>
@@ -78,7 +100,7 @@ export function ProjectPage() {
         {changes.error ? <div className="map-warning">Change-detection data unavailable: {changes.error}</div> : null}
       </section>
 
-      <ParcelDetailsPanel projectId={projectId} parcel={selectedParcel} explanation={!explanation.error && explanation.data?.parcel_id === selectedId ? explanation.data : null} explanationError={explanation.error} explanationLoading={explanation.loading && Boolean(selectedId)} anomalies={selectedAnomalies} anomaliesLoading={changes.loading} anomaliesError={changes.error} verifying={verifying} feedback={feedback} onClose={() => { setSelectedId(null); setFeedback(null); }} onVerify={verifySelectedParcel} />
+      <ParcelDetailsPanel projectId={projectId} parcel={selectedParcel} explanation={!explanation.error && explanation.data?.parcel_id === selectedId ? explanation.data : null} explanationError={explanation.error} explanationLoading={explanation.loading && Boolean(selectedId)} anomalies={selectedAnomalies} anomaliesLoading={changes.loading} anomaliesError={changes.error} verifying={verifying} feedback={feedback} onClose={() => { setSelectedId(null); setFeedback(null); }} onVerify={verifySelectedParcel} onReject={rejectFalsePositive} />
     </div>
   );
 }

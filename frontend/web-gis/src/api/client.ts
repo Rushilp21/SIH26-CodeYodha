@@ -8,6 +8,26 @@ export type DashboardSnapshot = {
 
 export type ProcessResponse = { project_id: string; status: string; message: string; demo: boolean; task_id?: string };
 export type ProcessingTask = { project_id: string; task_id: string; state: string; result: unknown };
+export type FalsePositiveLabel = "false_positive_building" | "false_positive_road" | "false_positive_canal" | "false_positive_other";
+export type ReviewLabelExport = {
+  schema_version: "bhumisetu.review-labels.v1";
+  type: "FeatureCollection";
+  name: string;
+  generated_at: string;
+  project: { id: string; name: string };
+  summary: {
+    project_parcels: number;
+    eligible_reviewed_labels: number;
+    positive_boundaries: number;
+    hard_negatives: number;
+    false_positive_classes: Record<string, number>;
+    rejected_without_specific_label: number;
+    unreviewed_or_ineligible: number;
+    recommended_minimum: { total: number; positive_boundaries: number; hard_negatives: number };
+    training_ready: boolean;
+  };
+  features: Array<{ type: "Feature"; geometry: Parcel["geom"]; properties: Record<string, unknown> }>;
+};
 
 export function fetchHealth(): Promise<{ status: string; service: string }> {
   return getJson("/health");
@@ -40,7 +60,13 @@ async function request(path: string, init?: RequestInit): Promise<Response> {
   catch { throw new Error("API connection failed. Check that the API and database are running on port 8000."); }
   if (!res.ok) {
     const body = await res.json().catch(() => null);
-    throw new Error(typeof body?.detail === "string" ? body.detail : `API ${res.status} (${path}). Check backend service logs.`);
+    const detail = body?.detail;
+    const message = typeof detail === "string"
+      ? detail
+      : typeof detail?.message === "string"
+        ? detail.message
+        : null;
+    throw new Error(message ?? `API ${res.status} (${path}). Check backend service logs.`);
   }
   return res;
 }
@@ -60,6 +86,13 @@ export async function createProject(name: string): Promise<Project> {
 export async function importParcelFile(id: string, collection: unknown): Promise<{ imported: number }> {
   return (await request(`/projects/${id}/parcels/import`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(collection) })).json();
 }
+export async function importPipelineParcelFile(id: string, parcels: unknown[], geojson?: unknown): Promise<{ imported: number }> {
+  return (await request(`/projects/${id}/parcels/pipeline-import`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ parcels, ...(geojson ? { geojson } : {}) }),
+  })).json();
+}
 
 /** Aggregates only existing canonical endpoints; no mock parcel metrics are used. */
 export async function fetchDashboardSnapshot(): Promise<DashboardSnapshot> {
@@ -72,9 +105,13 @@ export async function fetchDashboardSnapshot(): Promise<DashboardSnapshot> {
 }
 
 export async function fetchProjectStatus(id: string) {
-  return getJson<{ id: string; name: string; status: string; parcel_count: number; demo: boolean }>(
+  return getJson<{ id: string; name: string; status: string; parcel_count: number; demo: boolean; evidence_parcel_count: number; rl_evidence_parcel_count: number; pipeline_provenance: string | null }>(
     `/projects/${id}/status`
   );
+}
+
+export function fetchReviewLabelExport(projectId: string): Promise<ReviewLabelExport> {
+  return getJson(`/projects/${encodeURIComponent(projectId)}/review-labels/export`);
 }
 
 export async function processProject(id: string): Promise<ProcessResponse> {
@@ -101,11 +138,11 @@ export async function fetchExplanation(id: string): Promise<Explanation> {
   return getJson(`/parcels/${id}/explanation`);
 }
 
-export async function verifyParcel(id: string, geom?: Parcel["geom"], correctionType = "boundary_adjust") {
+export async function verifyParcel(id: string, geom?: Parcel["geom"], correctionType = "boundary_adjust", reviewLabel?: FalsePositiveLabel) {
   const res = await request(`/parcels/${id}/verify`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ geom, correction_type: correctionType }),
+    body: JSON.stringify({ geom, correction_type: correctionType, review_label: reviewLabel }),
   });
   if (!res.ok) throw new Error("verify failed");
   return res.json();
