@@ -38,5 +38,14 @@ export function ImportWorkspace() {
     } catch(e) { setError(e instanceof Error ? e.message : "Import failed"); }
     finally { setBusy(false); }
   }
-  return <section className="surface-card" style={{ padding: 20, margin: "20px 0" }}><h2>Open existing GIS / pipeline output</h2><p>For complete evidence, select the refined parcel GeoJSON and its matching refined_parcel_payloads.json companion. The backend verifies parcel IDs and geometries before storing confidence, topology, PPO evidence, baseline history, anomalies, health, and review priority.</p><div className="review-controls"><label>Project name<input value={name} disabled={!!createdId || busy} onChange={e => setName(e.target.value)} placeholder="Project name" /></label><label>Parcel GeoJSON or payload<input type="file" accept=".geojson,.json" disabled={busy} onChange={e => setFile(e.target.files?.[0] ?? null)} /></label><label>Evidence companion (recommended)<input type="file" accept=".json" disabled={busy} onChange={e => setEvidenceFile(e.target.files?.[0] ?? null)} /></label><button className="action-primary" disabled={busy || !file || !name.trim()} onClick={submit}>{busy ? "Importing…" : createdId ? "Retry import" : "Create & import"}</button></div><p className="panel-note">A geometry-only import remains supported but cannot display RL, topology, or cadastral health evidence.</p>{error && <p role="alert">{error}{createdId ? " The empty project is preserved for retry." : ""}</p>}</section>;
+  return <section className="surface-card import-workspace">
+    <div className="import-heading"><h2>Import parcel data</h2><span>GeoJSON with optional evidence</span></div>
+    <div className="import-grid">
+      <label>Project name<input value={name} disabled={!!createdId || busy} onChange={e => setName(e.target.value)} placeholder="Project name" /></label>
+      <label>Parcel file<input type="file" accept=".geojson,.json" disabled={busy} onChange={e => setFile(e.target.files?.[0] ?? null)} /></label>
+      <label>Evidence file <span>Optional</span><input type="file" accept=".json" disabled={busy} onChange={e => setEvidenceFile(e.target.files?.[0] ?? null)} /></label>
+      <button className="action-primary import-action" disabled={busy || !file || !name.trim()} onClick={submit}>{busy ? "Importing…" : createdId ? "Retry import" : "Create project"}</button>
+    </div>
+    {error && <p className="import-error" role="alert">{error}{createdId ? " The project is ready for another import attempt." : ""}</p>}
+  </section>;
 }

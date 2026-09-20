@@ -3,6 +3,10 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { Parcel } from "@shared/types";
 
+function hasValidGeometry(parcel: Parcel) {
+  return parcel.geom?.type === "Polygon" && Array.isArray(parcel.geom.coordinates) && parcel.geom.coordinates.some((ring) => Array.isArray(ring) && ring.length >= 4 && ring.every((coordinate) => Array.isArray(coordinate) && coordinate.length >= 2 && coordinate.every(Number.isFinite)));
+}
+
 export function ParcelMap({
   parcels,
   selectedId,
@@ -35,8 +39,10 @@ export function ParcelMap({
       },
       center: [85.31, 23.345],
       zoom: 15,
+      attributionControl: false,
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+    map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
     map.on("load", () => { setReady(true); setMapError(null); });
     map.on("error", () => setMapError("The basemap could not be fully loaded. Check your connection; parcel evidence remains available."));
     const observer = new ResizeObserver(() => map.resize());
@@ -54,9 +60,10 @@ export function ParcelMap({
     const map = mapRef.current;
     if (!map || !ready) return;
 
+    const validParcels = parcels.filter(hasValidGeometry);
     const fc = {
         type: "FeatureCollection" as const,
-        features: parcels.map((p) => ({
+        features: validParcels.map((p) => ({
           type: "Feature" as const,
           properties: { id: p.id, status: p.status, source: p.source, selected: p.id === selectedId },
           geometry: p.geom,
@@ -81,8 +88,9 @@ export function ParcelMap({
 
   useEffect(() => {
     const map = mapRef.current;
-    const selected = parcels.find((parcel) => parcel.id === selectedId);
-    const ring = fitParcels ? fitParcels.flatMap(parcel => parcel.geom.coordinates.flat()) : selected ? selected.geom.coordinates.flat() : parcels.flatMap((parcel) => parcel.geom.coordinates.flat());
+    const selected = parcels.find((parcel) => parcel.id === selectedId && hasValidGeometry(parcel));
+    const safeFitParcels = fitParcels?.filter(hasValidGeometry);
+    const ring = safeFitParcels?.length ? safeFitParcels.flatMap(parcel => parcel.geom.coordinates.flat()) : selected ? selected.geom.coordinates.flat() : parcels.filter(hasValidGeometry).flatMap((parcel) => parcel.geom.coordinates.flat());
     if (!map || !ready || !ring.length) return;
     const bounds = ring.reduce((current, coordinate) => current.extend(coordinate as [number, number]), new maplibregl.LngLatBounds(ring[0] as [number, number], ring[0] as [number, number]));
     const padding = Math.max(20, Math.min(80, map.getContainer().clientWidth / 5, map.getContainer().clientHeight / 5));

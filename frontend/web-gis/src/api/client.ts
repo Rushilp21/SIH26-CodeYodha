@@ -83,6 +83,9 @@ export async function fetchProjects(): Promise<Project[]> {
 export async function createProject(name: string): Promise<Project> {
   return (await request("/projects", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name }) })).json();
 }
+export async function deleteProject(id: string): Promise<void> {
+  await request(`/projects/${encodeURIComponent(id)}`, { method: "DELETE" });
+}
 export async function importParcelFile(id: string, collection: unknown): Promise<{ imported: number }> {
   return (await request(`/projects/${id}/parcels/import`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(collection) })).json();
 }

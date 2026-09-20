@@ -25,9 +25,8 @@
 .comparison-label.current { color: white; background: var(--primary); }
 .current-geometry { position: relative; min-width: 0; }
 .changes-map { width: 100%; height: 100%; }
-.changes-map-message, .changes-map-key { position: absolute; left: 12px; right: 12px; padding: 8px; font-size: 10px; border-radius: 6px; background: white; }
+.changes-map-message { position: absolute; left: 12px; right: 12px; padding: 8px; font-size: 10px; border-radius: 6px; background: white; }
 .changes-map-message { top: 65px; }
-.changes-map-key { bottom: 34px; }
 .change-evidence { padding: 22px; border-top: 1px solid var(--border); background: white; }
 .comparison-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }
 .comparison-metrics > div { padding: 12px; border: 1px solid var(--border); border-radius: 8px; }
@@ -35,11 +34,10 @@
 .comparison-metrics span { font-size: 10px; color: var(--text-secondary); }
 .comparison-metrics strong { font-size: 13px; margin: 6px 0; }
 .comparison-metrics small { color: var(--text-secondary); font-size: 10px; }
-.change-evidence-grid { display: grid; gap: 10px; }
-.change-evidence-grid article { padding: 12px; background: var(--bg); border-radius: 8px; }
+.change-evidence-grid { display: grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap: 8px; }
+.change-evidence-grid article { padding: 11px; border:1px solid var(--border-light); background: var(--bg); border-radius: 8px; }
 .change-evidence-grid h3 { font-size: 12px; font-weight: 600; text-transform: capitalize; }
 .change-evidence-grid h3 span { float: right; color: var(--primary); }
-.change-evidence-grid p { margin: 6px 0 0; }
 .changes-summary { padding: 20px 16px; border-left: 1px solid var(--border); }
 .change-summary-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px; margin-bottom: 8px; border: 1px solid var(--border); border-radius: 8px; font-size: 12px; text-transform: capitalize; }
 .change-summary-row strong { font-size: 20px; color: var(--primary); }

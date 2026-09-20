@@ -1,8 +1,7 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState, type ReactNode } from "react";
 import { Icon } from "./Icon";
-import { BackendStatus } from "./BackendStatus";
-import { fetchProjects } from "../api/client";
+import { deleteProject, fetchProjects } from "../api/client";
 import { useAsync } from "../hooks/useAsync";
 
 type AppShellProps = { children: ReactNode };
@@ -17,6 +16,7 @@ export function AppShell({ children }: AppShellProps) {
   const navigate = useNavigate();
   const projects = useAsync(fetchProjects, [pathname]);
   const [chosen, setChosen] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState(false);
   const projectId = projectIdFromPath(pathname) ?? (projects.data?.some(p => p.id === chosen) ? chosen : projects.data?.[0]?.id) ?? null;
   const projectPath = projectId ? `/projects/${projectId}` : null;
   const title = pathname === "/"
@@ -35,12 +35,31 @@ export function AppShell({ children }: AppShellProps) {
     { label: "Analytics", to: "/analytics", icon: "analytics" as const, enabled: true },
   ];
 
+  async function removeActiveProject() {
+    if (!projectId || deleting) return;
+    const project = projects.data?.find((item) => item.id === projectId);
+    if (!project || !window.confirm(`Delete “${project.name}”? All parcels, reviews and evidence in this project will be permanently removed.`)) return;
+    setDeleting(true);
+    try {
+      await deleteProject(projectId);
+      const remaining = (projects.data ?? []).filter((item) => item.id !== projectId);
+      const nextId = remaining[0]?.id ?? null;
+      projects.setData(remaining);
+      setChosen(nextId);
+      if (pathname.startsWith(`/projects/${projectId}`)) navigate(nextId ? `/projects/${nextId}` : "/");
+    } catch (error) {
+      window.alert(error instanceof Error ? error.message : "Project deletion failed.");
+    } finally {
+      setDeleting(false);
+    }
+  }
+
   return (
     <div className="app-shell">
       <aside className={`sidebar${collapsed ? " collapsed" : ""}`}>
         <div className="sidebar-logo">
-          <div className="logo-icon">GIS</div>
-          {!collapsed && <div className="logo-text">BhumiSetu<span>Urban Cadastral Platform</span></div>}
+          <div className="logo-icon"><Icon name="map" size={21} /></div>
+          {!collapsed && <div className="logo-text">BhumiSetu</div>}
         </div>
         <nav className="sidebar-nav" aria-label="Primary navigation">
           {navItems.map(({ label, to, icon, enabled }) =>
@@ -74,17 +93,14 @@ export function AppShell({ children }: AppShellProps) {
         <header className="topbar">
           <div>
             <div className="topbar-title">{title}</div>
-            <div className="topbar-breadcrumb">SIH26012 · AI Urban Parcel Mapping</div>
           </div>
           <div className="topbar-spacer" />
-          {!!projects.data?.length && <select aria-label="Active project" value={projectId ?? ""} onChange={e => { setChosen(e.target.value); navigate(`/projects/${e.target.value}`); }}>{projects.data.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}</select>}
-          <div className="pipeline-state" title="This frontend reads the canonical BhumiSetu API">
-            <Icon name="cpu" size={14} /> <span>Backend workspace</span>
+          <div className="topbar-actions">
+            {!!projects.data?.length && <div className="project-switcher"><Icon name="map" size={16} /><select aria-label="Active project" value={projectId ?? ""} onChange={e => { setChosen(e.target.value); navigate(`/projects/${e.target.value}`); }}>{projects.data.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}</select><button className="project-delete" type="button" disabled={deleting} onClick={removeActiveProject} aria-label={`Delete ${projects.data.find(p => p.id === projectId)?.name ?? "project"}`} title="Delete project"><Icon name="trash" size={16} /></button></div>}
+            <button className="topbar-icon" type="button" aria-label="Notifications" title="Notifications"><Icon name="bell" size={18} /></button>
+            <button className="topbar-icon" type="button" aria-label="Profile and settings" title="Profile and settings"><Icon name="user" size={18} /></button>
           </div>
-          <button className="topbar-icon" type="button" disabled title="Notifications unavailable" aria-label="Notifications unavailable"><Icon name="bell" size={16} /></button>
-          <button className="topbar-icon" type="button" disabled title="Profile unavailable" aria-label="Profile unavailable"><Icon name="user" size={16} /></button>
         </header>
-        <BackendStatus projectId={projectId} />
         <main className="app-main">{children}</main>
       </div>
     </div>
