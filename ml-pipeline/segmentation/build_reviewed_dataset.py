@@ -70,6 +70,13 @@ def validate_base_manifest(manifest: dict) -> dict[str, int]:
     return {key: int(counts[key]) for key in ("train", "validation", "test")}
 
 
+def require_dataset_ready(report: dict, report_path: Path) -> None:
+    """Fail closed after preserving a report that explains the blocker."""
+    if not report.get("dataset_ready", False):
+        detail = report.get("blocking_issue", "Reviewed dataset did not pass its readiness gate.")
+        raise RuntimeError(f"{detail} Inspect {report_path}")
+
+
 def imagery_records(manifest: dict) -> list[dict]:
     records = manifest.get("records")
     if isinstance(records, list):
@@ -168,7 +175,7 @@ def build(args: argparse.Namespace) -> dict:
                 groups[key].append(index)
             for group_index, indices in enumerate(groups.values()):
                 group = projected.loc[indices].copy()
-                centre = group.geometry.unary_union.centroid
+                centre = group.geometry.union_all().centroid
                 name = f"reviewed_{image_index:02d}_{group_index:03d}"
                 image_output = args.output_dir / f"{name}.tif"
                 window, bounds = _crop_image(source, centre.x, centre.y, args.window_size, image_output)
@@ -216,12 +223,30 @@ def build(args: argparse.Namespace) -> dict:
                 })
 
     unmatched = sorted(set(reviewed["parcel_id"]) - assigned_ids)
+    minimums = review_summary.get(
+        "recommended_minimum",
+        {"total": 100, "positive_boundaries": 40, "hard_negatives": 40},
+    )
+    matched_summary = {
+        "eligible_reviewed_labels": len(assigned_ids),
+        "positive_boundaries": role_counts["positive_boundary"],
+        "hard_negatives": role_counts["hard_negative"],
+        "false_positive_classes": dict(sorted(class_counts.items())),
+        "recommended_minimum": minimums,
+    }
+    matched_summary["training_ready"] = (
+        matched_summary["eligible_reviewed_labels"] >= int(minimums["total"])
+        and matched_summary["positive_boundaries"] >= int(minimums["positive_boundaries"])
+        and matched_summary["hard_negatives"] >= int(minimums["hard_negatives"])
+    )
     combined = [*base["records"], *feedback_records]
     combined_manifest = {
         **{key: value for key, value in base.items() if key != "records"},
         "version": args.output_dir.name,
         "records": combined,
         "review_export": str(args.review_export),
+        "review_summary": review_summary,
+        "matched_review_summary": matched_summary,
         "review_imagery_manifest": str(args.imagery_manifest),
         "target_aoi_used_for_training": bool(feedback_records),
         "target_aoi_used_for_parameter_selection": False,
@@ -241,14 +266,19 @@ def build(args: argparse.Namespace) -> dict:
         "combined_split_counts": dict(Counter(record["split"] for record in combined)),
         "review_training_ready": bool(review_summary.get("training_ready", False)),
         "spatial_leakage_guard": "feedback records train-only; base validation/test unchanged",
-        "dataset_ready": not unmatched and bool(feedback_records) and bool(review_summary.get("training_ready", False)),
+        "matched_review_training_ready": matched_summary["training_ready"],
+        "dataset_ready": bool(feedback_records) and matched_summary["training_ready"],
     }
     if unmatched:
-        report["blocking_issue"] = "Some reviewed geometries do not intersect the supplied georeferenced imagery."
+        report["warning"] = "Some reviewed geometries do not intersect the supplied georeferenced imagery and were excluded."
+    if not matched_summary["training_ready"]:
+        report["blocking_issue"] = "The reviewed geometries matched to imagery do not meet the coverage minimums."
     manifest_path = args.output_dir / "manifest.json"
     report_path = args.output_dir / "pretraining_report.json"
     manifest_path.write_text(json.dumps(combined_manifest, indent=2))
     report_path.write_text(json.dumps(report, indent=2))
+    if args.require_ready:
+        require_dataset_ready(report, report_path)
     return report
 
 

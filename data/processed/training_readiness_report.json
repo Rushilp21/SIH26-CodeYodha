@@ -1,0 +1,211 @@
+{
+  "schema_version": "bhumisetu.training-readiness.v1",
+  "dataset_manifest": "/home/jl_fs/bhumisetu/datasets/cadastrevision/finetune_v3/manifest.json",
+  "ready_for_smoke_test": true,
+  "ready_for_heavy_training": false,
+  "split_counts": {
+    "train": 9,
+    "validation": 3,
+    "test": 3
+  },
+  "spatial_split_isolated": true,
+  "hard_negative_feature_counts": {
+    "building": 724,
+    "canal": 77,
+    "road": 267
+  },
+  "hard_negative_pixel_counts": {
+    "building": 1632836,
+    "canal": 493556,
+    "other": 0,
+    "road": 1627048
+  },
+  "human_feedback_windows": 0,
+  "human_feedback_summary": {},
+  "blockers": [],
+  "warnings": [
+    "No human-reviewed feedback windows are present; smoke testing may proceed on independent OSM negatives only."
+  ],
+  "records": [
+    {
+      "name": "train_selected_0",
+      "split": "train",
+      "boundary_pixels": 11324,
+      "boundary_ratio": 0.004799736870659722,
+      "hard_negative_pixels": {
+        "road": 0,
+        "building": 688,
+        "canal": 50661,
+        "other": 0
+      }
+    },
+    {
+      "name": "validation_0",
+      "split": "validation",
+      "boundary_pixels": 11369,
+      "boundary_ratio": 0.004818810356987847,
+      "hard_negative_pixels": {
+        "road": 31085,
+        "building": 0,
+        "canal": 24937,
+        "other": 0
+      }
+    },
+    {
+      "name": "train_selected_1",
+      "split": "train",
+      "boundary_pixels": 16855,
+      "boundary_ratio": 0.007144080268012153,
+      "hard_negative_pixels": {
+        "road": 129196,
+        "building": 38734,
+        "canal": 22046,
+        "other": 0
+      }
+    },
+    {
+      "name": "test_0",
+      "split": "test",
+      "boundary_pixels": 17818,
+      "boundary_ratio": 0.007552252875434028,
+      "hard_negative_pixels": {
+        "road": 31649,
+        "building": 11108,
+        "canal": 114297,
+        "other": 0
+      }
+    },
+    {
+      "name": "train_selected_2",
+      "split": "train",
+      "boundary_pixels": 16565,
+      "boundary_ratio": 0.007021162245008681,
+      "hard_negative_pixels": {
+        "road": 52689,
+        "building": 16185,
+        "canal": 20851,
+        "other": 0
+      }
+    },
+    {
+      "name": "validation_1",
+      "split": "validation",
+      "boundary_pixels": 20506,
+      "boundary_ratio": 0.008691575792100694,
+      "hard_negative_pixels": {
+        "road": 22203,
+        "building": 0,
+        "canal": 56886,
+        "other": 0
+      }
+    },
+    {
+      "name": "train_selected_3",
+      "split": "train",
+      "boundary_pixels": 24705,
+      "boundary_ratio": 0.010471343994140625,
+      "hard_negative_pixels": {
+        "road": 43957,
+        "building": 354179,
+        "canal": 19576,
+        "other": 0
+      }
+    },
+    {
+      "name": "test_1",
+      "split": "test",
+      "boundary_pixels": 26636,
+      "boundary_ratio": 0.011289808485243056,
+      "hard_negative_pixels": {
+        "road": 59580,
+        "building": 18357,
+        "canal": 0,
+        "other": 0
+      }
+    },
+    {
+      "name": "train_selected_4",
+      "split": "train",
+      "boundary_pixels": 26664,
+      "boundary_ratio": 0.011301676432291666,
+      "hard_negative_pixels": {
+        "road": 187360,
+        "building": 341466,
+        "canal": 25658,
+        "other": 0
+      }
+    },
+    {
+      "name": "validation_2",
+      "split": "validation",
+      "boundary_pixels": 31743,
+      "boundary_ratio": 0.013454437255859375,
+      "hard_negative_pixels": {
+        "road": 0,
+        "building": 0,
+        "canal": 51006,
+        "other": 0
+      }
+    },
+    {
+      "name": "train_selected_5",
+      "split": "train",
+      "boundary_pixels": 29963,
+      "boundary_ratio": 0.012699974907769097,
+      "hard_negative_pixels": {
+        "road": 360342,
+        "building": 138764,
+        "canal": 0,
+        "other": 0
+      }
+    },
+    {
+      "name": "test_2",
+      "split": "test",
+      "boundary_pixels": 31285,
+      "boundary_ratio": 0.013260311550564237,
+      "hard_negative_pixels": {
+        "road": 160134,
+        "building": 276031,
+        "canal": 20918,
+        "other": 0
+      }
+    },
+    {
+      "name": "train_selected_6",
+      "split": "train",
+      "boundary_pixels": 35754,
+      "boundary_ratio": 0.015154520670572916,
+      "hard_negative_pixels": {
+        "road": 181978,
+        "building": 116727,
+        "canal": 27492,
+        "other": 0
+      }
+    },
+    {
+      "name": "train_selected_7",
+      "split": "train",
+      "boundary_pixels": 40955,
+      "boundary_ratio": 0.01735899183485243,
+      "hard_negative_pixels": {
+        "road": 141071,
+        "building": 95340,
+        "canal": 46883,
+        "other": 0
+      }
+    },
+    {
+      "name": "train_selected_8",
+      "split": "train",
+      "boundary_pixels": 46598,
+      "boundary_ratio": 0.019750807020399306,
+      "hard_negative_pixels": {
+        "road": 225804,
+        "building": 225257,
+        "canal": 12345,
+        "other": 0
+      }
+    }
+  ]
+}

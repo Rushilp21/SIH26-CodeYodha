@@ -1,0 +1,51 @@
+{
+  "schema_version": "bhumisetu.training-smoke.v1",
+  "status": "passed",
+  "purpose": "One-epoch systems check only; this checkpoint is not eligible for promotion.",
+  "dataset_manifest": "/home/jl_fs/bhumisetu/datasets/cadastrevision/finetune_v3/manifest.json",
+  "device": "cuda",
+  "cuda_available": true,
+  "training_windows": [
+    "train_selected_0",
+    "train_selected_1",
+    "train_selected_2",
+    "train_selected_3",
+    "train_selected_4",
+    "train_selected_5",
+    "train_selected_6",
+    "train_selected_7",
+    "train_selected_8"
+  ],
+  "validation_windows": [
+    "validation_0",
+    "validation_1",
+    "validation_2"
+  ],
+  "test_windows_evaluated": [],
+  "training_patch_count": 139,
+  "batches": 70,
+  "loss_finite": true,
+  "loss": 0.626911050081253,
+  "baseline_validation": {
+    "threshold": 0.75,
+    "boundary_iou": 0.0351028721217493,
+    "boundary_f1": 0.06782489560635763,
+    "precision": 0.04414582779949152,
+    "recall": 0.14629507372127384,
+    "false_positive_rate": 0.028729575565240573,
+    "predicted_boundary_pixels": 210824,
+    "reference_boundary_pixels": 63618
+  },
+  "post_smoke_validation": {
+    "threshold": 0.5,
+    "boundary_iou": 0.038666302150406125,
+    "boundary_f1": 0.0744537529914145,
+    "precision": 0.04774680732926152,
+    "recall": 0.16896161463736678,
+    "false_positive_rate": 0.03056283832815104,
+    "predicted_boundary_pixels": 225125,
+    "reference_boundary_pixels": 63618
+  },
+  "checkpoint": "/home/jl_fs/bhumisetu/results/segformer_readiness_v1_smoke/checkpoint",
+  "promotion_attempted": false
+}

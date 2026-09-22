@@ -16,7 +16,17 @@ from backend.api.app.schemas.models import (
 )
 from backend.api.app.services.geo import geojson_to_wkt, geom_to_geojson
 from backend.api.app.tasks.pipeline import process_project as process_project_task
-from backend.db.models.orm import ConfidenceEvidence, Correction, Parcel, Project
+from backend.db.models.orm import (
+    Anomaly,
+    Building,
+    ConfidenceEvidence,
+    Correction,
+    Parcel,
+    ParcelVersion,
+    Project,
+    Road,
+    SurveyQueue,
+)
 from backend.db.session import get_db
 from celery.result import AsyncResult
 
@@ -147,6 +157,24 @@ def list_projects(db: Session = Depends(get_db)):
         )
         for p in rows
     ]
+
+
+@router.delete("/{project_id}", status_code=204)
+def delete_project(project_id: str, db: Session = Depends(get_db)):
+    project = db.get(Project, project_id)
+    if project is None:
+        raise HTTPException(status_code=404, detail="Project not found")
+
+    parcel_ids = [row[0] for row in db.query(Parcel.id).filter(Parcel.project_id == project_id).all()]
+    if parcel_ids:
+        for model in (Anomaly, SurveyQueue, Correction, ConfidenceEvidence, ParcelVersion):
+            db.query(model).filter(model.parcel_id.in_(parcel_ids)).delete(synchronize_session=False)
+        db.query(Building).filter(Building.parcel_id.in_(parcel_ids)).delete(synchronize_session=False)
+    db.query(Building).filter(Building.project_id == project_id).delete(synchronize_session=False)
+    db.query(Road).filter(Road.project_id == project_id).delete(synchronize_session=False)
+    db.query(Parcel).filter(Parcel.project_id == project_id).delete(synchronize_session=False)
+    db.delete(project)
+    db.commit()
 
 
 @router.post("/{project_id}/imagery", response_model=ImageryUploadOut)

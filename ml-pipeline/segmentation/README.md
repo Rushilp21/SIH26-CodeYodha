@@ -22,8 +22,8 @@ Communicate via GeoJSON files, not Python imports into Dev 2.
 
 ## CadastreVision fine-tuning
 
-`prepare_finetune_dataset.py` range-reads ten geographically disjoint,
-density-stratified 1536 px CadastreVision windows (6 train, 2 validation, 2
+`prepare_finetune_dataset.py` range-reads fifteen geographically disjoint,
+density-stratified 1536 px CadastreVision windows (9 train, 3 validation, 3
 test) directly into persistent Jarvis storage. Target-AOI windows are excluded.
 It stores the official cadastral linework as a separate mask contract, so
 `finetune_cadastrevision.py` can build thin line targets without buffering parcel
@@ -128,3 +128,70 @@ Inspect `pretraining_report.json` before training. `dataset_ready` is true only
 when the export meets review coverage minimums, every reviewed geometry matches
 the supplied imagery, feedback windows were produced, and the held-out split
 contract remains intact.
+
+### Preflight and smoke test
+
+Run the read-only readiness gate before allocating time to a proper training
+run. It validates every referenced file, CRS/transform, split counts and
+spatial isolation, thin-mask density, boundary/negative conflicts, and
+rasterized road/building/canal coverage. OSM ancillary labels and explicit
+human feedback are reported separately.
+
+```bash
+/home/jl_fs/bhumisetu/venv/bin/python \
+  ml-pipeline/segmentation/check_training_readiness.py \
+  --dataset-manifest /home/jl_fs/bhumisetu/datasets/cadastrevision/finetune_v3/manifest.json \
+  --output /home/jl_fs/bhumisetu/results/training_readiness/report.json
+```
+
+After the preflight passes, `--smoke-test` performs exactly one training epoch
+and one validation pass. It deliberately does not inspect the test split,
+invoke vectorization/PPO, create a promotable candidate, or alter the canonical
+model. The checkpoint exists only for debugging the complete save/load path.
+
+```bash
+/home/jl_fs/bhumisetu/venv/bin/python \
+  ml-pipeline/segmentation/finetune_cadastrevision.py \
+  --version readiness_v1 \
+  --dataset-manifest /home/jl_fs/bhumisetu/datasets/cadastrevision/finetune_v3/manifest.json \
+  --batch-size 2 \
+  --smoke-test
+```
+
+For the later heavy-training gate, build a combined reviewed manifest with
+`build_reviewed_dataset.py --require-ready`, then rerun the readiness command
+with `--require-human-feedback`. Untouched AI parcels must never be promoted to
+labels merely to satisfy the minimum.
+
+Heavy training starts from the promoted calibrated v4 model and compares every
+checkpoint with `chain_finetune_v4_calibrated/report.json`. Both paths are
+explicit trainer arguments so an experiment cannot silently fall back to the
+older frozen baseline. A checkpoint is not production merely because the
+trainer's pixel gate passes; its end-to-end chain report must also pass the
+held-out polygon, topology, test, and PPO promotion gates.
+
+### Conservative reviewed-feedback recipe
+
+Reviewed target-AOI windows can easily overwhelm the geographically independent
+CadastreVision windows. The trainer therefore samples reference and feedback
+patches with fixed expected mass (70% reference, 30% feedback), then balances
+positive-boundary, hard-negative, and ordinary patches within each source. It
+does not duplicate geometries or copy reviewed examples into validation/test.
+
+The default optimization recipe is intentionally conservative after the first
+reviewed-feedback experiment regressed on independent test and polygon metrics:
+
+- tune only the SegFormer decode head;
+- use a `5e-6` learning rate;
+- cap positive-class amplification at 4x;
+- apply a precision-oriented Tversky term (`alpha=0.85`);
+- require validation IoU/F1/precision/FPR improvement;
+- require the non-target pixel → polygon → topology chain gate before a
+  checkpoint can become the candidate;
+- require independent test and target report-only PPO improvement before final
+  promotion.
+
+`--unfreeze-last-encoder-block` is an explicit opt-in experiment, not the
+default. A rejected run deletes its candidate model and leaves the calibrated
+v4 model canonical. Only an end-to-end accepted run should be vectorized and
+imported into the Web-GIS for visual comparison.

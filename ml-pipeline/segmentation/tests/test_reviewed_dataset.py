@@ -49,6 +49,15 @@ class ReviewedDatasetContracts(unittest.TestCase):
         with self.assertRaises(ValueError):
             MODULE.validate_base_manifest(unsafe)
 
+    def test_require_ready_fails_closed_with_report_location(self):
+        report_path = Path("/tmp/reviewed/pretraining_report.json")
+        with self.assertRaisesRegex(RuntimeError, "pretraining_report.json"):
+            MODULE.require_dataset_ready(
+                {"dataset_ready": False, "blocking_issue": "Matched labels are insufficient."},
+                report_path,
+            )
+        MODULE.require_dataset_ready({"dataset_ready": True}, report_path)
+
 
 if __name__ == "__main__":
     unittest.main()

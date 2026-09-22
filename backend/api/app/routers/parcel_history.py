@@ -30,7 +30,9 @@ def comparison(parcel_id: str, db: Session = Depends(get_db)):
                ST_Area(ST_SymDifference(p.geom, v.geom)::geography) AS boundary_difference_sqm,
                v.id AS historical_version_id, v.captured_at
         FROM parcels p LEFT JOIN LATERAL (
-            SELECT * FROM parcel_versions WHERE parcel_id=p.id ORDER BY captured_at DESC LIMIT 1
+            SELECT * FROM parcel_versions
+            WHERE parcel_id=p.id AND NOT ST_Equals(geom, p.geom)
+            ORDER BY captured_at DESC LIMIT 1
         ) v ON true WHERE p.id=CAST(:id AS uuid)
     """), {"id": parcel_id}).mappings().one()
     result = dict(row)

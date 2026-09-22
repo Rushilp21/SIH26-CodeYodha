@@ -11,7 +11,7 @@ from backend.api.app.schemas.models import GeoJSONGeometry, VerifyIn
 from backend.api.app.routers.parcels import verify_parcel
 from backend.api.app.routers.parcel_import import PipelineImport, _health_score, _priority, _validate_pipeline_companion
 from backend.api.app.routers.projects import _review_export_document
-from backend.db.models.orm import Anomaly, ConfidenceEvidence, Correction
+from backend.db.models.orm import Anomaly, ConfidenceEvidence, Correction, ParcelVersion
 from backend.db.session import get_db
 
 VALID = {"type": "Polygon", "coordinates": [[[85,23],[85.001,23],[85.001,23.001],[85,23]]]}
@@ -43,7 +43,7 @@ class Contracts(unittest.TestCase):
 
     def test_routes_are_registered(self):
         paths = app.openapi()["paths"]
-        for route in ["/parcels/{parcel_id}/history", "/parcels/{parcel_id}/comparison", "/projects/{project_id}/parcels/import", "/projects/{project_id}/parcels/pipeline-import", "/projects/{project_id}/review-labels/export"]:
+        for route in ["/parcels/{parcel_id}/history", "/parcels/{parcel_id}/comparison", "/projects/{project_id}/parcels/import", "/projects/{project_id}/parcels/pipeline-import", "/projects/{project_id}/review-labels/export", "/projects/{project_id}"]:
             self.assertIn(route, paths)
 
     def test_review_export_contains_only_explicit_training_labels(self):
@@ -108,6 +108,7 @@ class Contracts(unittest.TestCase):
         result = verify_parcel("123", VerifyIn(correction_type="reject"), db)
         self.assertEqual(result.status, "rejected")
         self.assertEqual(parcel.source, "ai_extracted")
+        self.assertFalse(any(isinstance(call.args[0], ParcelVersion) for call in db.add.call_args_list))
         db.commit.assert_called_once()
 
     def test_false_positive_label_is_persisted_as_review_evidence(self):

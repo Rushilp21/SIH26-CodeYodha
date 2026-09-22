@@ -82,7 +82,8 @@ def verify_parcel(parcel_id: str, body: VerifyIn, db: Session = Depends(get_db))
     corrected = body.geom.model_dump() if body.geom is not None else original
     if body.correction_type in ("split", "merge", "land_use_fix"):
         raise HTTPException(422, "Use a dedicated split/merge or land-use workflow; this endpoint verifies a single boundary")
-    db.add(ParcelVersion(parcel_id=p.id, geom=p.geom, captured_at=datetime.now(timezone.utc), source=p.source))
+    if body.geom is not None:
+        db.add(ParcelVersion(parcel_id=p.id, geom=p.geom, captured_at=datetime.now(timezone.utc), source=p.source))
     stored_correction_type = body.correction_type
     if body.correction_type == "reject" and body.review_label:
         stored_correction_type = f"reject_{body.review_label.removeprefix('false_positive_')}"
